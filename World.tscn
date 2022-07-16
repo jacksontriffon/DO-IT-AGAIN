@@ -1,7 +1,9 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=14 format=2]
 
-[ext_resource path="res://Scenes/Character/Character.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Blocks/Spikes/Spikes.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/Background/Background.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/Transition/SceneTransition.tscn" type="PackedScene" id=4]
+[ext_resource path="res://World.gd" type="Script" id=5]
 [ext_resource path="res://Scenes/Blocks/Grass/Grass-Spritesheet.png" type="Texture" id=8]
 
 [sub_resource type="ConvexPolygonShape2D" id=3]
@@ -84,54 +86,88 @@ points = PoolVector2Array( 0, 0, 8, 0, 8, 8, 0, 8 )
 } ]
 6/z_index = 0
 
-[node name="Node2D" type="Node2D"]
+[sub_resource type="RectangleShape2D" id=11]
+extents = Vector2( 21.875, 7694.44 )
 
-[node name="Blocks" type="CanvasLayer" parent="."]
-layer = 2
+[node name="World" type="Node2D"]
+script = ExtResource( 5 )
 
-[node name="Spikes" parent="Blocks" instance=ExtResource( 2 )]
-position = Vector2( 276, 164 )
+[node name="YSort" type="YSort" parent="."]
 
-[node name="Spikes2" parent="Blocks" instance=ExtResource( 2 )]
-position = Vector2( 284, 164 )
+[node name="ParallaxBackground" type="ParallaxBackground" parent="YSort"]
 
-[node name="Spikes3" parent="Blocks" instance=ExtResource( 2 )]
-position = Vector2( 292, 164 )
+[node name="Background" parent="YSort/ParallaxBackground" instance=ExtResource( 3 )]
 
-[node name="Spikes4" parent="Blocks" instance=ExtResource( 2 )]
-position = Vector2( 156, 20 )
-rotation = 3.14159
+[node name="Blocks" type="Node2D" parent="YSort"]
 
-[node name="Spikes5" parent="Blocks" instance=ExtResource( 2 )]
-position = Vector2( 148, 20 )
-rotation = 3.14159
-
-[node name="Spikes6" parent="Blocks" instance=ExtResource( 2 )]
-position = Vector2( 140, 20 )
-rotation = 3.14159
-
-[node name="Spikes7" parent="Blocks" instance=ExtResource( 2 )]
-position = Vector2( 132, 20 )
-rotation = 3.14159
-
-[node name="TileMap" type="TileMap" parent="Blocks"]
+[node name="TileMap" type="TileMap" parent="YSort/Blocks"]
 tile_set = SubResource( 1 )
 cell_size = Vector2( 8, 8 )
 cell_custom_transform = Transform2D( 8, 0, 0, 8, 0, 0 )
 format = 1
-tile_data = PoolIntArray( -262141, 6, 0, -262140, 6, 1, -262139, 6, 1, -262138, 6, 1, -262137, 6, 1, -262136, 6, 1, -262135, 6, 2, -196605, 6, 65536, -196604, 6, 65537, -196603, 6, 65537, -196602, 6, 65537, -196601, 6, 65537, -196600, 6, 65537, -196599, 6, 65538, 14, 6, 0, 15, 6, 1, 16, 6, 1, 17, 6, 1, 18, 6, 1, 19, 6, 1, 20, 6, 2, 65550, 6, 65536, 65551, 6, 65537, 65552, 6, 65537, 65553, 6, 65537, 65554, 6, 65537, 65555, 6, 65537, 65556, 6, 65538, 262168, 6, 0, 262169, 6, 2, 327704, 6, 65536, 327705, 6, 65538, 589854, 6, 0, 589855, 6, 1, 589856, 6, 1, 589857, 6, 1, 589858, 6, 1, 589859, 6, 1, 589860, 6, 1, 589861, 6, 2, 655390, 6, 65536, 655391, 6, 65537, 655392, 6, 65537, 655393, 6, 65537, 655394, 6, 65537, 655395, 6, 65537, 655396, 6, 65537, 655397, 6, 65538, 917519, 6, 0, 917520, 6, 1, 917521, 6, 1, 917522, 6, 1, 917523, 6, 1, 917524, 6, 1, 917525, 6, 1, 917526, 6, 1, 917527, 6, 2, 983055, 6, 65536, 983056, 6, 65537, 983057, 6, 65537, 983058, 6, 65537, 983059, 6, 65537, 983060, 6, 65537, 983061, 6, 65537, 983062, 6, 65537, 983063, 6, 65538, 1114124, 6, 0, 1114125, 6, 2, 1179660, 6, 65536, 1179661, 6, 65538, 1376256, 6, 0, 1376257, 6, 1, 1376258, 6, 1, 1376259, 6, 1, 1376260, 6, 1, 1376261, 6, 1, 1376262, 6, 1, 1376263, 6, 1, 1376264, 6, 1, 1376265, 6, 1, 1376266, 6, 1, 1376267, 6, 1, 1376268, 6, 1, 1376269, 6, 1, 1376270, 6, 1, 1376271, 6, 1, 1376272, 6, 1, 1376273, 6, 1, 1376274, 6, 1, 1376275, 6, 1, 1376276, 6, 1, 1376277, 6, 1, 1376278, 6, 1, 1376279, 6, 1, 1376280, 6, 1, 1376281, 6, 1, 1376282, 6, 1, 1376283, 6, 1, 1376284, 6, 1, 1376285, 6, 1, 1376286, 6, 1, 1376287, 6, 1, 1376288, 6, 1, 1376289, 6, 1, 1376290, 6, 1, 1376291, 6, 1, 1376292, 6, 1, 1376293, 6, 1, 1376294, 6, 1, 1376295, 6, 2, 1441792, 6, 65536, 1441793, 6, 65537, 1441794, 6, 65537, 1441795, 6, 65537, 1441796, 6, 65537, 1441797, 6, 65537, 1441798, 6, 65537, 1441799, 6, 65537, 1441800, 6, 65537, 1441801, 6, 65537, 1441802, 6, 65537, 1441803, 6, 65537, 1441804, 6, 65537, 1441805, 6, 65537, 1441806, 6, 65537, 1441807, 6, 65537, 1441808, 6, 65537, 1441809, 6, 65537, 1441810, 6, 65537, 1441811, 6, 65537, 1441812, 6, 65537, 1441813, 6, 65537, 1441814, 6, 65537, 1441815, 6, 65537, 1441816, 6, 65537, 1441817, 6, 65537, 1441818, 6, 65537, 1441819, 6, 65537, 1441820, 6, 65537, 1441821, 6, 65537, 1441822, 6, 65537, 1441823, 6, 65537, 1441824, 6, 65537, 1441825, 6, 65537, 1441826, 6, 65537, 1441827, 6, 65537, 1441828, 6, 65537, 1441829, 6, 65537, 1441830, 6, 65537, 1441831, 6, 65538 )
+tile_data = PoolIntArray( -3145711, 6, 0, -3145710, 6, 2, -3080175, 6, 65536, -3080174, 6, 65538, -2818039, 6, 0, -2818038, 6, 2, -2752503, 6, 65536, -2752502, 6, 65538, -2621428, 6, 0, -2621427, 6, 2, -2555892, 6, 65536, -2555891, 6, 65538, -2490353, 6, 0, -2490352, 6, 2, -2424817, 6, 65536, -2424816, 6, 65538, -2359277, 6, 0, -2359276, 6, 2, -2293741, 6, 65536, -2293740, 6, 65538, -2162664, 6, 0, -2162663, 6, 1, -2162662, 6, 1, -2162661, 6, 1, -2162660, 6, 1, -2162659, 6, 2, -2097128, 6, 65536, -2097127, 6, 65537, -2097126, 6, 65537, -2097125, 6, 65537, -2097124, 6, 65537, -2097123, 6, 65538, -1966047, 6, 0, -1966046, 6, 2, -1900511, 6, 65536, -1900510, 6, 65538, -1638374, 6, 0, -1638373, 6, 1, -1638372, 6, 1, -1638371, 6, 1, -1638370, 6, 1, -1638369, 6, 2, -1572838, 6, 65536, -1572837, 6, 65537, -1572836, 6, 65537, -1572835, 6, 65537, -1572834, 6, 65537, -1572833, 6, 65538, -1507308, 6, 0, -1507307, 6, 2, -1441772, 6, 65536, -1441771, 6, 65538, -1245170, 6, 0, -1245169, 6, 2, -1179634, 6, 65536, -1179633, 6, 65538, -983022, 6, 0, -983021, 6, 1, -983020, 6, 1, -983019, 6, 1, -983018, 6, 1, -983017, 6, 1, -983016, 6, 1, -983015, 6, 1, -983014, 6, 1, -983013, 6, 2, -917486, 6, 65536, -917485, 6, 65537, -917484, 6, 65537, -917483, 6, 65537, -917482, 6, 65537, -917481, 6, 65537, -917480, 6, 65537, -917479, 6, 65537, -917478, 6, 65537, -917477, 6, 65538, -655327, 6, 0, -655326, 6, 2, -589791, 6, 65536, -589790, 6, 65538, -458723, 6, 0, -458722, 6, 2, -393187, 6, 65536, -393186, 6, 65538, -262120, 6, 0, -262119, 6, 1, -262118, 6, 2, -196584, 6, 65536, -196583, 6, 65537, -196582, 6, 65538, 14, 6, 0, 15, 6, 1, 16, 6, 1, 17, 6, 1, 18, 6, 1, 19, 6, 1, 20, 6, 2, 65550, 6, 65536, 65551, 6, 65537, 65552, 6, 65537, 65553, 6, 65537, 65554, 6, 65537, 65555, 6, 65537, 65556, 6, 65538, 262168, 6, 0, 262169, 6, 2, 327704, 6, 65536, 327705, 6, 65538, 589854, 6, 0, 589855, 6, 1, 589856, 6, 1, 589857, 6, 1, 589858, 6, 1, 589859, 6, 1, 589860, 6, 1, 589861, 6, 2, 655390, 6, 65536, 655391, 6, 65537, 655392, 6, 65537, 655393, 6, 65537, 655394, 6, 65537, 655395, 6, 65537, 655396, 6, 65537, 655397, 6, 65538, 786458, 6, 0, 786459, 6, 2, 851994, 6, 65536, 851995, 6, 65538, 917519, 6, 0, 917520, 6, 1, 917521, 6, 1, 917522, 6, 1, 917523, 6, 1, 917524, 6, 1, 917525, 6, 1, 917526, 6, 1, 917527, 6, 2, 983055, 6, 65536, 983056, 6, 65537, 983057, 6, 65537, 983058, 6, 65537, 983059, 6, 65537, 983060, 6, 65537, 983061, 6, 65537, 983062, 6, 65537, 983063, 6, 65538, 1114124, 6, 0, 1114125, 6, 2, 1179660, 6, 65536, 1179661, 6, 65538, 1376256, 6, 0, 1376257, 6, 1, 1376258, 6, 1, 1376259, 6, 1, 1376260, 6, 1, 1376261, 6, 1, 1376262, 6, 1, 1376263, 6, 1, 1376264, 6, 1, 1376265, 6, 1, 1376266, 6, 1, 1376267, 6, 1, 1376268, 6, 1, 1376269, 6, 1, 1376270, 6, 1, 1376271, 6, 1, 1376272, 6, 1, 1376273, 6, 1, 1376274, 6, 1, 1376275, 6, 1, 1376276, 6, 1, 1376277, 6, 1, 1376278, 6, 1, 1376279, 6, 1, 1376280, 6, 1, 1376281, 6, 1, 1376282, 6, 1, 1376283, 6, 1, 1376284, 6, 1, 1376285, 6, 1, 1376286, 6, 1, 1376287, 6, 1, 1376288, 6, 1, 1376289, 6, 1, 1376290, 6, 1, 1376291, 6, 1, 1376292, 6, 1, 1376293, 6, 1, 1376294, 6, 1, 1376295, 6, 2, 1441792, 6, 65536, 1441793, 6, 65537, 1441794, 6, 65537, 1441795, 6, 65537, 1441796, 6, 65537, 1441797, 6, 65537, 1441798, 6, 65537, 1441799, 6, 65537, 1441800, 6, 65537, 1441801, 6, 65537, 1441802, 6, 65537, 1441803, 6, 65537, 1441804, 6, 65537, 1441805, 6, 65537, 1441806, 6, 65537, 1441807, 6, 65537, 1441808, 6, 65537, 1441809, 6, 65537, 1441810, 6, 65537, 1441811, 6, 65537, 1441812, 6, 65537, 1441813, 6, 65537, 1441814, 6, 65537, 1441815, 6, 65537, 1441816, 6, 65537, 1441817, 6, 65537, 1441818, 6, 65537, 1441819, 6, 65537, 1441820, 6, 65537, 1441821, 6, 65537, 1441822, 6, 65537, 1441823, 6, 65537, 1441824, 6, 65537, 1441825, 6, 65537, 1441826, 6, 65537, 1441827, 6, 65537, 1441828, 6, 65537, 1441829, 6, 65537, 1441830, 6, 65537, 1441831, 6, 65538 )
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-layer = 3
+[node name="SpikeTraps" type="Node2D" parent="YSort/Blocks"]
 
-[node name="Character" parent="CanvasLayer" instance=ExtResource( 1 )]
-position = Vector2( 219, 78 )
+[node name="Spikes" parent="YSort/Blocks/SpikeTraps" instance=ExtResource( 2 )]
+position = Vector2( 276, 164 )
 
-[node name="Camera2D" type="Camera2D" parent="CanvasLayer/Character"]
-position = Vector2( -1, 0 )
-current = true
-smoothing_enabled = true
-drag_margin_left = 0.0
-drag_margin_top = 0.0
-drag_margin_right = 0.0
-drag_margin_bottom = 0.0
+[node name="Spikes9" parent="YSort/Blocks/SpikeTraps" instance=ExtResource( 2 )]
+position = Vector2( 118, -133 )
+rotation = 3.14159
+
+[node name="Spikes11" parent="YSort/Blocks/SpikeTraps" instance=ExtResource( 2 )]
+position = Vector2( 244, -180 )
+rotation = 3.14159
+
+[node name="Spikes12" parent="YSort/Blocks/SpikeTraps" instance=ExtResource( 2 )]
+position = Vector2( 276, -220 )
+rotation = 3.14159
+
+[node name="Spikes13" parent="YSort/Blocks/SpikeTraps" instance=ExtResource( 2 )]
+position = Vector2( 268, -220 )
+rotation = 3.14159
+
+[node name="Spikes2" parent="YSort/Blocks/SpikeTraps" instance=ExtResource( 2 )]
+position = Vector2( 284, 164 )
+
+[node name="Spikes3" parent="YSort/Blocks/SpikeTraps" instance=ExtResource( 2 )]
+position = Vector2( 292, 164 )
+
+[node name="Spikes8" parent="YSort/Blocks/SpikeTraps" instance=ExtResource( 2 )]
+position = Vector2( 300, 164 )
+
+[node name="Spikes10" parent="YSort/Blocks/SpikeTraps" instance=ExtResource( 2 )]
+position = Vector2( 308, 164 )
+
+[node name="Spikes4" parent="YSort/Blocks/SpikeTraps" instance=ExtResource( 2 )]
+position = Vector2( 156, 20 )
+rotation = 3.14159
+
+[node name="Spikes5" parent="YSort/Blocks/SpikeTraps" instance=ExtResource( 2 )]
+position = Vector2( 148, 20 )
+rotation = 3.14159
+
+[node name="Spikes6" parent="YSort/Blocks/SpikeTraps" instance=ExtResource( 2 )]
+position = Vector2( 140, 20 )
+rotation = 3.14159
+
+[node name="Spikes7" parent="YSort/Blocks/SpikeTraps" instance=ExtResource( 2 )]
+position = Vector2( 132, 20 )
+rotation = 3.14159
+
+[node name="CollisionBody" type="StaticBody2D" parent="YSort"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/CollisionBody"]
+position = Vector2( -18, -4759 )
+shape = SubResource( 11 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="YSort/CollisionBody"]
+position = Vector2( 339, -2571 )
+shape = SubResource( 11 )
+
+[node name="SceneTransition" parent="." instance=ExtResource( 4 )]
+
+[node name="Spacing" type="Control" parent="."]
+margin_top = -10000.0
+margin_right = 40.0

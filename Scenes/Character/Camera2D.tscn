@@ -1,0 +1,16 @@
+[gd_scene format=2]
+
+[node name="Camera2D" type="Camera2D"]
+current = true
+process_mode = 0
+limit_left = 0
+limit_right = 320
+limit_bottom = 180
+limit_smoothed = true
+smoothing_enabled = true
+drag_margin_left = 0.0
+drag_margin_top = 0.0
+drag_margin_right = 0.0
+drag_margin_bottom = 0.0
+editor_draw_limits = true
+editor_draw_drag_margin = true

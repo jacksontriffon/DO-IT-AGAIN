@@ -12,7 +12,6 @@ config_version=4
 
 config/name="DO IT AGAIN"
 run/main_scene="res://World.tscn"
-config/icon="res://icon.png"
 
 [autoload]
 
@@ -22,10 +21,11 @@ Player="*res://Global/Player.gd"
 
 window/size/width=320
 window/size/height=180
+window/size/always_on_top=true
 window/size/test_width=640
-window/size/test_height=320
+window/size/test_height=360
 window/stretch/mode="2d"
-window/stretch/aspect="keep_height"
+window/stretch/aspect="keep"
 
 [gui]
 

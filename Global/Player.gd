@@ -1,5 +1,9 @@
 extends Node
 
+# --- DATA ---
+# Here's a place to send signals but NOT set data.
+# That's done from nodes outside the autoload.
+
 var dead = false
 
 signal died
@@ -11,11 +15,11 @@ func _ready() -> void:
 
 func death() -> void:
 	emit_signal("died")
-	dead = true
-	print('death')
 
 func respawn() -> void:
-	emit_signal("respawn")
+	if dead:
+		emit_signal("respawn")
+	
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
