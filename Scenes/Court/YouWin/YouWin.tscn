@@ -1,12 +1,14 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Scenes/Court/YouWin/Font/Win_Font.tres" type="DynamicFont" id=1]
 [ext_resource path="res://Scenes/Court/YouWin/Font/Win_description.tres" type="DynamicFont" id=2]
+[ext_resource path="res://Scenes/Court/YouWin/YouWin.gd" type="Script" id=3]
 
 [node name="YouWin" type="ColorRect"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color( 0.117647, 0.117647, 0.117647, 1 )
+script = ExtResource( 3 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 anchor_right = 1.0
@@ -34,11 +36,22 @@ margin_bottom = 180.0
 size_flags_vertical = 3
 custom_colors/default_color = Color( 0.572549, 0.572549, 0.572549, 1 )
 custom_fonts/normal_font = ExtResource( 2 )
+bbcode_enabled = true
+bbcode_text = "		
+		
+		Thanks for playing our 48hr
+		GMTK GameJam submission :)
+		
+		Rate us on [url=https://bluesketch.itch.io/do-it-again][color=#fa5c5c]Itch.io[/color][/url] and come 
+		check out our other projects 
+		on [url=https://discord.gg/83umZpRd][color=#7684FF]Discord.[/color][/url]"
 text = "		
 		
 		Thanks for playing our 48hr
-		GameJam submission :)
+		GMTK GameJam submission :)
 		
 		Rate us on Itch.io and come 
 		check out our other projects 
 		on Discord."
+
+[connection signal="meta_clicked" from="VBoxContainer/RichTextLabel2" to="." method="_on_RichTextLabel2_meta_clicked"]
