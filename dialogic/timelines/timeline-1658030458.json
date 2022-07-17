@@ -1,6 +1,33 @@
 {
 	"events": [
-
+		{
+			"character": "",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "A second time you've climbed back to the Gods' domain"
+		},
+		{
+			"character": "",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Although impressive, the Jury is not yet satisfied"
+		},
+		{
+			"character": "",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "I trust that one more attempt shall tilt the odds in your favor"
+		},
+		{
+			"character": "",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "It is time to DO IT AGAIN...  AGAIN!"
+		},
+		{
+			"emit_signal": "do_it_again_again",
+			"event_id": "dialogic_040"
+		}
 	],
 	"metadata": {
 		"dialogic-version": "1.4.3",

@@ -4,8 +4,12 @@ extends Node
 # Here's a place to send signals but NOT set data.
 # That's done from nodes outside the autoload.
 
+var wins := []
+
 var dead = false
 var slippery = false
+export var just_launched := false
+var won_this_run := false
 
 signal died
 signal screen_hidden
@@ -13,13 +17,20 @@ signal respawn
 signal on_ice
 signal off_ice
 signal zap
+signal lifted
 signal new_game
 signal transition
 signal roll_the_dice
 signal new_ability_unlocked
+signal win
+signal gate_opened
+signal beat_the_game
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	just_launched = true
+	yield(get_tree().create_timer(1), "timeout")
+	just_launched = false
 	pass # Replace with function body.
 
 func death() -> void:
@@ -42,6 +53,9 @@ func stop_slipping() -> void:
 func zap() -> void:
 	emit_signal('zap')
 
+func lifted() -> void:
+	emit_signal("lifted")
+
 func new_game() -> void:
 	emit_signal("new_game")
 
@@ -51,7 +65,15 @@ func transition() -> void:
 func roll_the_dice() -> void:
 	emit_signal("roll_the_dice")
 
+func win()->void:
+	if not just_launched:
+		emit_signal("win")
 
+func open_gate()->void:
+	emit_signal("gate_opened")
+
+func beat_the_game()->void:
+	emit_signal("beat_the_game")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta: float) -> void:

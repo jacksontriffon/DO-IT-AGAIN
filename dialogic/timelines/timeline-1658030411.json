@@ -1,6 +1,33 @@
 {
 	"events": [
-
+		{
+			"character": "",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Hmm. So you've returned to Heaven's gates"
+		},
+		{
+			"character": "",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Though, the Jury is still unsatisfied with your efforts"
+		},
+		{
+			"character": "",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "We require more trials to unlock your potential"
+		},
+		{
+			"character": "",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "It is time to head back and DO IT AGAIN"
+		},
+		{
+			"emit_signal": "do_it_again",
+			"event_id": "dialogic_040"
+		}
 	],
 	"metadata": {
 		"dialogic-version": "1.4.3",

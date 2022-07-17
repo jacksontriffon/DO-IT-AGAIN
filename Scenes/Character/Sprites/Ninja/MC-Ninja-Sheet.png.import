@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/cloud.png-543519901674017f272274d0d1385976.stex"
+path="res://.import/MC-Ninja-Sheet.png-a55907a5ddb85d5981bdf47ae8348b30.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/cloud.png"
-dest_files=[ "res://.import/cloud.png-543519901674017f272274d0d1385976.stex" ]
+source_file="res://Scenes/Character/Sprites/Ninja/MC-Ninja-Sheet.png"
+dest_files=[ "res://.import/MC-Ninja-Sheet.png-a55907a5ddb85d5981bdf47ae8348b30.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/MC-Sheet.png-2a9199803a8f3fbba3280b236485ff9e.stex"
+path="res://.import/MC-Antigrav-Sheet.png-0fc6f54ad1bac56f4787693648287d5d.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/Character/Sprites/Default/MC-Sheet.png"
-dest_files=[ "res://.import/MC-Sheet.png-2a9199803a8f3fbba3280b236485ff9e.stex" ]
+source_file="res://Scenes/Character/Sprites/AntiGrav/MC-Antigrav-Sheet.png"
+dest_files=[ "res://.import/MC-Antigrav-Sheet.png-0fc6f54ad1bac56f4787693648287d5d.stex" ]
 
 [params]
 

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Beam-Sheet.png-dfeb6dfadc4c7791cc88f11e85fb51f7.stex"
+path="res://.import/Beam-Sheet.png-e3c789aeb22a0f229852c21f0b0e4804.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/Character/Sprites/default/Beam-Sheet.png"
-dest_files=[ "res://.import/Beam-Sheet.png-dfeb6dfadc4c7791cc88f11e85fb51f7.stex" ]
+source_file="res://Scenes/Character/Sprites/Default/Beam-Sheet.png"
+dest_files=[ "res://.import/Beam-Sheet.png-e3c789aeb22a0f229852c21f0b0e4804.stex" ]
 
 [params]
 

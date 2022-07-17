@@ -13,8 +13,9 @@ var at_bottom = Vector2(160,90)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	spawn_in_court()
+	spawn_below_court()
 	Player.connect("respawn", self, 'spawn_at_bottom')
+	Player.connect("lifted", self, '_camera_on_court')
 
 
 func spawn_at_bottom():
@@ -41,7 +42,7 @@ func spawn_at_bottom():
 
 
 
-func spawn_in_court():
+func spawn_in_court()->void:
 	# Set character
 	var character: KinematicBody2D = spawn_new_player()
 	character.position = court_location
@@ -50,6 +51,11 @@ func spawn_in_court():
 	add_child(starting_camera)
 	starting_camera.position = court_location
 	starting_camera.current = true
+
+func spawn_below_court()->void:
+	# Set character
+	var character: KinematicBody2D = spawn_new_player()
+	character.position = clouds_location
 
 
 func spawn_new_player()->KinematicBody2D:
@@ -63,3 +69,10 @@ func spawn_new_player()->KinematicBody2D:
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed('ui_restart'):
 		Player.death()
+
+
+func _camera_on_court()->void:
+	var starting_camera := Camera2D.new()
+	add_child(starting_camera)
+	starting_camera.position = court_location
+	starting_camera.current = true

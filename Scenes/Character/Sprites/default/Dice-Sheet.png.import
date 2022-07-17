@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Dice-Sheet.png-5c695464828f72926c9ee15ef486efd6.stex"
+path="res://.import/Dice-Sheet.png-44261cb79e3b4143cfd1a6bd28f730e8.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/Character/Sprites/default/Dice-Sheet.png"
-dest_files=[ "res://.import/Dice-Sheet.png-5c695464828f72926c9ee15ef486efd6.stex" ]
+source_file="res://Scenes/Character/Sprites/Default/Dice-Sheet.png"
+dest_files=[ "res://.import/Dice-Sheet.png-44261cb79e3b4143cfd1a6bd28f730e8.stex" ]
 
 [params]
 

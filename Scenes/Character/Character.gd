@@ -6,13 +6,15 @@ const MAX_SPEED = 128
 var friction = 0.8
 const AIR_RESISTANCE = 0.25
 const GRAVITY = 600
-const JUMP_FORCE = 208
+var jump_force = 208
 
 var motion := Vector2.ZERO
 var in_air := false
 var running := false
 var respawning := true
 var zapped := false
+var anti_gravity := false
+
 
 var gaining_new_ability := false
 var current_ability : String
@@ -31,7 +33,6 @@ var jump_sfx = preload('res://Scenes/Character/SFX/Jump.mp3')
 var dice_sfx = preload('res://Scenes/Character/SFX/Dice.wav')
 var death_sfx = preload('res://Scenes/Character/SFX/Death.wav')
 var thud_sfx = preload('res://Scenes/Character/SFX/Thud.mp3')
-#var ability_got_sfx = preload('res://Scenes/Character/SFX/Ability-got.wav')
 var sfx := {
 	'Walking': walking_sfx,
 	'Zap': zap_sfx,
@@ -39,7 +40,6 @@ var sfx := {
 	'Dice': dice_sfx,
 	'Death': death_sfx,
 	'Thud': thud_sfx,
-#	'Ability-got': ability_got_sfx,
 }
 
 onready var sprite: Sprite = $Sprite
@@ -48,6 +48,12 @@ onready var camera: Camera2D = $Camera2D
 onready var audio: AudioStreamPlayer = $AudioStreamPlayer2D
 onready var ability_icon: Sprite = $"%AbilityIcon"
 onready var ability_label: Label = $"%AbilityText"
+
+var cloudhead_spritesheet = preload('res://Scenes/Character/Sprites/Cloudhead/MC-cloud-Sheet.png')
+var unlucky_spritesheet = preload('res://Scenes/Character/Sprites/Default/MC-Sheet.png')
+var antigrav_spritesheet = preload('res://Scenes/Character/Sprites/AntiGrav/MC-Antigrav-Sheet.png')
+var ninja_spritesheet = preload('res://Scenes/Character/Sprites/Ninja/MC-Ninja-Sheet.png')
+var angel_spritesheet = preload('res://Scenes/Character/Sprites/Angel/MC-WingsSheet.png')
 
 
 # Called when the node enters the scene tree for the first time.
@@ -58,6 +64,8 @@ func _ready() -> void:
 	Player.connect("off_ice", self, '_stop_slipping')
 	Player.connect("zap", self, '_zap')
 	Player.connect("roll_the_dice", self, '_roll_the_dice')
+	Player.connect('win', self, '_win')
+	Player.connect("lifted", self, '_lifted')
 	$Zap.visible = false
 	$Beam.visible = false
 	$Dice.visible = false
@@ -71,7 +79,14 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
-	_apply_gravity(delta)
+	match current_ability:
+		'Feather Falling':
+			_apply_feather_falling(delta)
+		'AntiGrav':
+			_check_for_antigrav(delta)
+		_:
+			_apply_gravity(delta)
+		
 	# Get motion
 	motion = move_and_slide(motion, Vector2.UP)
 	_apply_falling_death(motion)
@@ -107,8 +122,8 @@ func _physics_process(delta: float) -> void:
 	elif not running:
 		_apply_air_resistance()
 	# Released jump early
-	elif Input.is_action_just_released("ui_up") and motion.y < -JUMP_FORCE / 2:
-		motion.y = -JUMP_FORCE / 2
+	elif Input.is_action_just_released("ui_up") and motion.y < -jump_force / 2:
+		motion.y = -jump_force / 2
 
 
 func _check_for_movement(delta:float)->void:
@@ -120,11 +135,39 @@ func _check_for_movement(delta:float)->void:
 		running = false
 
 func _jump()->void:
-	motion.y = -JUMP_FORCE
-	in_air = true
-	animation.play("default_jump")
-	audio.stream = sfx.Jump
-	audio.play()
+	
+	match current_ability:
+#		'Unlucky':
+#			pass
+		'Feather Falling':
+			animation.play("cloudhead_float")
+			motion.y = -jump_force
+			in_air = true
+			# SFX
+			audio.stream = sfx.Jump
+			audio.play()
+		'AntiGrav':
+			# Upside down
+			if anti_gravity:
+				motion.y = -jump_force
+				in_air = true
+				anti_gravity = false
+			# Normal + Inverse gravity
+			else:
+				anti_gravity = true
+				motion.y = jump_force
+				in_air = true
+#		'Double Jump':
+#			pass
+#		'Wall Jump':
+#			pass
+		_:
+			animation.play("default_jump")
+			motion.y = -jump_force
+			in_air = true
+			# SFX
+			audio.stream = sfx.Jump
+			audio.play()
 
 func _land()->void:
 	animation.play("default_land")
@@ -143,12 +186,12 @@ func _die()->void: # Connected to 'died' signal
 		queue_free()
 
 func _respawn() -> void:
+	_unlucky()
 	# Falling animation
 	animation.play("default_die")
 	animation.seek(0.3)
 	
-	
-	# Thud sound
+	# Thud sound ~ removed
 	var time_until_getting_up = 1.3
 	var time_until_hit_ground = 0.35
 	yield(get_tree().create_timer(time_until_hit_ground),"timeout")
@@ -167,9 +210,11 @@ func _respawn() -> void:
 	yield(get_tree().create_timer(0.7), "timeout")
 	# Finish respawning
 	respawning = false
+	
 
 func _zap() -> void:
 	if not zapped:
+		_unlucky()
 		zapped = true
 		$Zap.visible = true
 		animation.play("zap")
@@ -179,6 +224,17 @@ func _zap() -> void:
 		$Zap.visible = false
 		_die()
 
+func _win()->void:
+	if not Player.won_this_run:
+		Player.wins.push_back(current_ability)
+		Player.won_this_run = true
+
+func _lifted()->void:
+	var court_height = -980
+	position.y = min(position.y, court_height)
+	motion.y = -jump_force
+
+# --- ABILITIES ---
 func _roll_the_dice():
 	# Prevent movement
 	gaining_new_ability = true
@@ -199,13 +255,13 @@ func _roll_the_dice():
 	$Diamond.visible = false
 	gaining_new_ability = false
 	
-	yield(get_tree().create_timer(6), "timeout")
+	yield(get_tree().create_timer(2), "timeout")
 	$AbilityContainer.visible = false
 
 func get_random_number()-> int:
 	var rng = RandomNumberGenerator.new()
 	rng.randomize()
-	var random_number = rng.randf_range(0, 2)
+	var random_number = rng.randf_range(0, 2.9) # Only first 3 values 
 	random_number = int(random_number)
 	return random_number
 
@@ -214,13 +270,20 @@ func _new_ability(number:int)->void:
 	ability_label.text = current_ability
 	
 	match current_ability:
+		'Unlucky':
+			ability_icon.frame = 4
+			_unlucky()
 		'Feather Falling':
 			ability_icon.frame = 3
+			_unlock_feather_falling()
 		'AntiGrav':
 			ability_icon.frame = 0
+			_unlock_antigrav()
 		'Double Jump':
+			_unlock_double_jump()
 			ability_icon.frame = 2
 		'Wall Jump':
+			_unlock_wall_jump()
 			ability_icon.frame = 1
 		_:
 			current_ability = 'Unlucky'
@@ -228,8 +291,26 @@ func _new_ability(number:int)->void:
 	
 	print(current_ability)
 
-func _set_ability():
-	pass
+func _unlock_feather_falling()->void:
+	$Sprite.texture = cloudhead_spritesheet
+	$Sprite.hframes = 13
+
+func _unlock_antigrav()->void:
+	$Sprite.texture = antigrav_spritesheet
+	$Sprite.hframes = 12
+
+func _unlock_double_jump()->void:
+	$Sprite.texture = angel_spritesheet
+	$Sprite.hframes = 15
+
+func _unlock_wall_jump()->void:
+	$Sprite.texture = ninja_spritesheet
+	$Sprite.hframes = 15
+
+func _unlucky()->void:
+#	anti_gravity = false
+	$Sprite.texture = unlucky_spritesheet
+	$Sprite.hframes = 15
 
 # --- FORCES ---
 func _apply_gravity(delta:float)->void:
@@ -266,9 +347,20 @@ func _apply_falling_death(motion: Vector2)->void:
 		
 
 func _apply_slipping()->void:
-#	print('slipping')
 	friction = 0.01
 
 func _stop_slipping()->void:
-#	print('not slipping')
 	friction = 0.8
+
+func _check_for_antigrav(delta)->void:
+	if Player.won_this_run:
+		motion.y += (GRAVITY * delta)
+	elif anti_gravity:
+		motion.y -= (GRAVITY * delta)
+	else:
+		motion.y += (GRAVITY * delta)
+
+func _apply_feather_falling(delta:float)->void:
+	jump_force = 90
+	var percentage_of_gravity = 0.2
+	motion.y += (GRAVITY * delta) * percentage_of_gravity

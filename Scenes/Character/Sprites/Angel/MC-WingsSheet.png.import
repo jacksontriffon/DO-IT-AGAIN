@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/GoldenGate.png-007abcb9c96f4779bbaf1448fe0c75fe.stex"
+path="res://.import/MC-WingsSheet.png-82570ac2b448897bccb9f86175454370.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/Court/Room/GoldenGate.png"
-dest_files=[ "res://.import/GoldenGate.png-007abcb9c96f4779bbaf1448fe0c75fe.stex" ]
+source_file="res://Scenes/Character/Sprites/Angel/MC-WingsSheet.png"
+dest_files=[ "res://.import/MC-WingsSheet.png-82570ac2b448897bccb9f86175454370.stex" ]
 
 [params]
 

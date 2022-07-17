@@ -1,11 +1,13 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Scenes/Court/Room/Courthouse-Sheet.png" type="Texture" id=1]
 [ext_resource path="res://Scenes/Court/Room/CourthouseClouds.png" type="Texture" id=2]
-[ext_resource path="res://Scenes/Court/Room/GoldenGate.png" type="Texture" id=3]
+[ext_resource path="res://Scenes/Court/Room/GoldenGate-Sheet.png" type="Texture" id=3]
+[ext_resource path="res://Scenes/Court/Room/SFX/GateOpen.wav" type="AudioStream" id=4]
 [ext_resource path="res://Scenes/Court/Court.gd" type="Script" id=5]
 [ext_resource path="res://Scenes/Court/JudgeGod/JudgeGod.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Scenes/Court/Jury/Jury.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Scenes/Court/Room/SFX/Win.wav" type="AudioStream" id=8]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Crowd"
@@ -36,6 +38,46 @@ tracks/1/keys = {
 "update": 1,
 "values": [ 0, 1 ]
 }
+tracks/2/type = "audio"
+tracks/2/path = NodePath("AudioStreamPlayer")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"clips": [  ],
+"times": PoolRealArray(  )
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "Open_gate"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/path = NodePath("Door:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.15, 0.3, 0.45 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3 ]
+}
+tracks/1/type = "audio"
+tracks/1/path = NodePath("AudioStreamPlayer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 4 )
+} ],
+"times": PoolRealArray( -0.1 )
+}
 
 [sub_resource type="Animation" id=2]
 length = 0.001
@@ -50,6 +92,36 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ 0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Door:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "Win"
+length = 1.5
+tracks/0/type = "audio"
+tracks/0/path = NodePath("AudioStreamPlayer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 8 )
+} ],
+"times": PoolRealArray( 0 )
 }
 
 [sub_resource type="RectangleShape2D" id=3]
@@ -71,12 +143,14 @@ hframes = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Crowd = SubResource( 1 )
+anims/Open_gate = SubResource( 6 )
 anims/RESET = SubResource( 2 )
+anims/Win = SubResource( 7 )
 
 [node name="Door" type="Sprite" parent="."]
 texture = ExtResource( 3 )
 centered = false
-offset = Vector2( -10, 2 )
+hframes = 4
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
@@ -96,6 +170,10 @@ position = Vector2( 160, 177 )
 shape = SubResource( 3 )
 one_way_collision = true
 
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2( 159, -2 )
+shape = SubResource( 3 )
+
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2( -3.5, 85 )
 shape = SubResource( 5 )
@@ -107,7 +185,7 @@ shape = SubResource( 5 )
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2( 160, 173 )
+position = Vector2( 161, 181 )
 shape = SubResource( 4 )
 
 [node name="JudgeGod" parent="." instance=ExtResource( 6 )]
@@ -130,5 +208,8 @@ position = Vector2( 176, 113 )
 
 [node name="Cloudhead" parent="Jury" instance=ExtResource( 7 )]
 position = Vector2( 201, 113 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
