@@ -2,19 +2,19 @@
 
 # Do it again
 
-### The climb to heaven isn't a one-way trip! Each life's a random factor, but you've just gotta **do it again!**
+[Itch.io](https://bluesketch.itch.io/do-it-again)
 
-### ***"DO IT AGAIN"*** is a platformer with just **one** level as the 'Heavenly Court's' trial. To combat the trial's obstacles, the player is gifted an ability by the Judge God, assigned randomly by dice roll! Feather falling, Anti-gravity, and more - Each new life brings promise of a helpful (not guaranteed) upgrade!
+The climb to heaven isn't a one-way trip! Each life's a random factor, but you've just gotta **do it again!**
+
+***"DO IT AGAIN"*** is a platformer with just **one** level as the 'Heavenly Court's' trial. To combat the trial's obstacles, the player is gifted an ability by the Judge God, assigned randomly by dice roll! Feather falling, Anti-gravity, and more - Each new life brings promise of a helpful (not guaranteed) upgrade!
 
 ***Programmer*:** JacksonTriffon
 
-***Artist&SoundDesigner:*** Blue.Sketch  *(insta: @blueprint.sketch)*[https://www.instagram.com/blueprint.sketch/](https://www.instagram.com/blueprint.sketch/)
+***Artist&SoundDesigner:*** Blue.Sketch - [Instagram](https://www.instagram.com/blueprint.sketch/)
 
 # Want to see more of our stuff? Here's our
 
-[https://discord.gg/Ea3pfJdc](https://discord.gg/Ea3pfJdc)
-
-[https://github.com/SJcoded/DO-IT-AGAIN](https://github.com/SJcoded/DO-IT-AGAIN)
+[Discord](https://discord.gg/Ea3pfJdc)
 
 Download and extract the zip file (right click zip file, click 'Extract All'). Double click the .exe. file named 'DO IT AGAIN', and enjoy!
 
