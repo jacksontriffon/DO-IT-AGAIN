@@ -10,6 +10,7 @@ var dead = false
 var slippery = false
 export var just_launched := false
 var won_this_run := false
+var music_playing := false
 
 signal died
 signal screen_hidden
@@ -25,6 +26,8 @@ signal new_ability_unlocked
 signal win
 signal gate_opened
 signal beat_the_game
+signal start_bg_music
+signal end_bg_music
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -74,6 +77,16 @@ func open_gate()->void:
 
 func beat_the_game()->void:
 	emit_signal("beat_the_game")
+
+func start_bg_music()->void:
+	if not music_playing:
+		emit_signal("start_bg_music")
+		music_playing = true
+
+func end_bg_music()->void:
+	if music_playing:
+		emit_signal("end_bg_music")
+		music_playing = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta: float) -> void:

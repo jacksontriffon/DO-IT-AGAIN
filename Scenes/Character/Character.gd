@@ -249,13 +249,15 @@ func _roll_the_dice():
 	_new_ability(random_number)
 	$AbilityContainer.visible = true
 	yield(get_tree().create_timer(1), "timeout")
-	
 	$Beam.visible = false
 	$Dice.visible = false
 	$Diamond.visible = false
 	gaining_new_ability = false
 	
-	yield(get_tree().create_timer(2), "timeout")
+	yield(get_tree().create_timer(0.5), "timeout")
+	Player.start_bg_music()
+	
+	yield(get_tree().create_timer(1.5), "timeout")
 	$AbilityContainer.visible = false
 
 func get_random_number()-> int:

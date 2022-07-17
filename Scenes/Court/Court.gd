@@ -32,6 +32,7 @@ func _open_gate()->void:
 func _on_Area2D_body_entered(body: Node) -> void:
 	Player.lifted()
 	_rile_up_court()
+	Player.end_bg_music()
 	if Player.won_this_run:
 		return
 	if Player.wins.empty():

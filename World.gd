@@ -16,6 +16,8 @@ func _ready() -> void:
 	spawn_below_court()
 	Player.connect("respawn", self, 'spawn_at_bottom')
 	Player.connect("lifted", self, '_camera_on_court')
+	Player.connect('start_bg_music', self, 'start_bg_music')
+	Player.connect('end_bg_music', self, 'stop_bg_music')
 
 
 func spawn_at_bottom():
@@ -76,3 +78,13 @@ func _camera_on_court()->void:
 	add_child(starting_camera)
 	starting_camera.position = court_location
 	starting_camera.current = true
+
+
+func start_bg_music()->void:
+	$AudioStreamPlayer.play()
+	$AnimationPlayer.play("fade_in_music")
+
+func stop_bg_music()->void:
+	$AnimationPlayer.play("fade_out_music")
+	yield($AnimationPlayer, "animation_finished")
+	$AudioStreamPlayer.stop()
