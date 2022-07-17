@@ -1,0 +1,134 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://Scenes/Court/Room/Courthouse-Sheet.png" type="Texture" id=1]
+[ext_resource path="res://Scenes/Court/Room/CourthouseClouds.png" type="Texture" id=2]
+[ext_resource path="res://Scenes/Court/Room/GoldenGate.png" type="Texture" id=3]
+[ext_resource path="res://Scenes/Court/Court.gd" type="Script" id=5]
+[ext_resource path="res://Scenes/Court/JudgeGod/JudgeGod.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scenes/Court/Jury/Jury.tscn" type="PackedScene" id=7]
+
+[sub_resource type="Animation" id=1]
+resource_name = "Crowd"
+length = 0.6
+loop = true
+step = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("Background:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray(  ),
+"transitions": PoolRealArray(  ),
+"update": 1,
+"values": [  ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Background:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0, 1 ]
+}
+
+[sub_resource type="Animation" id=2]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Background:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 160, 3 )
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 6.5, 95 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 160, 1 )
+
+[node name="Court" type="Node2D"]
+script = ExtResource( 5 )
+
+[node name="Background" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+centered = false
+hframes = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Crowd = SubResource( 1 )
+anims/RESET = SubResource( 2 )
+
+[node name="Door" type="Sprite" parent="."]
+texture = ExtResource( 3 )
+centered = false
+offset = Vector2( -10, 2 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="Clouds2" type="Sprite" parent="StaticBody2D"]
+position = Vector2( 0, 20 )
+texture = ExtResource( 2 )
+centered = false
+offset = Vector2( 0, 150 )
+flip_v = true
+
+[node name="Clouds" type="Sprite" parent="StaticBody2D"]
+position = Vector2( 160, 170 )
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2( 160, 177 )
+shape = SubResource( 3 )
+one_way_collision = true
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2( -3.5, 85 )
+shape = SubResource( 5 )
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2( 323, 87 )
+shape = SubResource( 5 )
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( 160, 173 )
+shape = SubResource( 4 )
+
+[node name="JudgeGod" parent="." instance=ExtResource( 6 )]
+position = Vector2( 254, 60 )
+
+[node name="Jury" type="Node2D" parent="."]
+position = Vector2( -7, 0 )
+
+[node name="AntiGrav" parent="Jury" instance=ExtResource( 7 )]
+position = Vector2( 103, 113 )
+
+[node name="Ninja" parent="Jury" instance=ExtResource( 7 )]
+position = Vector2( 127, 113 )
+
+[node name="Angel" parent="Jury" instance=ExtResource( 7 )]
+position = Vector2( 151, 113 )
+
+[node name="Warrior" parent="Jury" instance=ExtResource( 7 )]
+position = Vector2( 176, 113 )
+
+[node name="Cloudhead" parent="Jury" instance=ExtResource( 7 )]
+position = Vector2( 201, 113 )
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]

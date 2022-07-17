@@ -1,12 +1,12 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Scenes/Transition/SceneTransition.gd" type="Script" id=1]
-[ext_resource path="res://Assets/cloud.png" type="Texture" id=2]
+[ext_resource path="res://Scenes/Transition/Cloud-transition-Sheet.png" type="Texture" id=2]
 
 [sub_resource type="Animation" id=1]
 length = 0.001
 tracks/0/type = "value"
-tracks/0/path = NodePath("Clouds:position")
+tracks/0/path = NodePath("Sprite:offset")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -15,229 +15,46 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 0, 0 ) ]
+"values": [ Vector2( 0, 120 ) ]
 }
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=2]
 resource_name = "clouds"
 tracks/0/type = "value"
-tracks/0/path = NodePath("Clouds:position")
+tracks/0/path = NodePath("Sprite:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray(  ),
+"transitions": PoolRealArray(  ),
 "update": 0,
-"values": [ Vector2( 0, 0 ), Vector2( 0, -350 ) ]
+"values": [  ]
 }
-
-[sub_resource type="Animation" id=2]
-resource_name = "fadein"
-step = 0.5
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:offset")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 0.8, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 120 ), Vector2( 0, -180 ), Vector2( 0, -360 ), Vector2( 0, -500 ) ]
+}
 
 [node name="SceneTransition" type="CanvasLayer"]
 script = ExtResource( 1 )
 
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+centered = false
+offset = Vector2( 0, 120 )
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/RESET = SubResource( 1 )
-anims/clouds = SubResource( 3 )
-anims/fadein = SubResource( 2 )
-
-[node name="Clouds" type="Node2D" parent="."]
-
-[node name="Cloud" type="Sprite" parent="Clouds"]
-position = Vector2( 28, 203 )
-scale = Vector2( 0.426429, 0.426429 )
-texture = ExtResource( 2 )
-
-[node name="Cloud4" type="Sprite" parent="Clouds"]
-position = Vector2( 188, 204 )
-scale = Vector2( 0.426429, 0.426429 )
-texture = ExtResource( 2 )
-
-[node name="Cloud29" type="Sprite" parent="Clouds"]
-position = Vector2( 225, 549 )
-scale = Vector2( 0.426429, 0.426429 )
-texture = ExtResource( 2 )
-
-[node name="Cloud30" type="Sprite" parent="Clouds"]
-position = Vector2( 16, 555 )
-scale = Vector2( 0.426429, 0.426429 )
-texture = ExtResource( 2 )
-
-[node name="Cloud31" type="Sprite" parent="Clouds"]
-position = Vector2( 23, 611 )
-scale = Vector2( 0.426429, 0.426429 )
-texture = ExtResource( 2 )
-
-[node name="Cloud32" type="Sprite" parent="Clouds"]
-position = Vector2( 176, 629 )
-scale = Vector2( 0.426429, 0.426429 )
-texture = ExtResource( 2 )
-
-[node name="Cloud33" type="Sprite" parent="Clouds"]
-position = Vector2( 204, 424 )
-scale = Vector2( 0.426429, 0.426429 )
-texture = ExtResource( 2 )
-
-[node name="Cloud35" type="Sprite" parent="Clouds"]
-position = Vector2( 204, 424 )
-scale = Vector2( 0.426429, 0.426429 )
-texture = ExtResource( 2 )
-
-[node name="Cloud34" type="Sprite" parent="Clouds"]
-position = Vector2( 314, 611 )
-scale = Vector2( 0.426429, 0.426429 )
-texture = ExtResource( 2 )
-
-[node name="Cloud28" type="Sprite" parent="Clouds"]
-position = Vector2( 241, 442 )
-scale = Vector2( 0.426429, 0.426429 )
-texture = ExtResource( 2 )
-
-[node name="Cloud5" type="Sprite" parent="Clouds"]
-position = Vector2( 155, 254 )
-scale = Vector2( 0.426429, 0.426429 )
-texture = ExtResource( 2 )
-
-[node name="Cloud2" type="Sprite" parent="Clouds"]
-position = Vector2( 104, 220 )
-scale = Vector2( 0.647738, 0.647738 )
-texture = ExtResource( 2 )
-
-[node name="Cloud9" type="Sprite" parent="Clouds"]
-position = Vector2( 9, 260 )
-scale = Vector2( 0.647738, 0.647738 )
-texture = ExtResource( 2 )
-
-[node name="Cloud6" type="Sprite" parent="Clouds"]
-position = Vector2( 96, 296 )
-scale = Vector2( 0.647738, 0.647738 )
-texture = ExtResource( 2 )
-
-[node name="Cloud10" type="Sprite" parent="Clouds"]
-position = Vector2( 10, 324 )
-scale = Vector2( 0.647738, 0.647738 )
-texture = ExtResource( 2 )
-
-[node name="Cloud3" type="Sprite" parent="Clouds"]
-position = Vector2( 251, 241 )
-scale = Vector2( 0.826935, 0.826935 )
-texture = ExtResource( 2 )
-
-[node name="Cloud7" type="Sprite" parent="Clouds"]
-position = Vector2( 209, 302 )
-scale = Vector2( 0.826935, 0.826935 )
-texture = ExtResource( 2 )
-
-[node name="Cloud14" type="Sprite" parent="Clouds"]
-position = Vector2( 300, 344 )
-scale = Vector2( 0.826935, 0.826935 )
-texture = ExtResource( 2 )
-
-[node name="Cloud15" type="Sprite" parent="Clouds"]
-position = Vector2( 185, 381 )
-scale = Vector2( 0.826935, 0.826935 )
-texture = ExtResource( 2 )
-
-[node name="Cloud17" type="Sprite" parent="Clouds"]
-position = Vector2( 310, 398 )
-scale = Vector2( 0.826935, 0.826935 )
-texture = ExtResource( 2 )
-
-[node name="Cloud18" type="Sprite" parent="Clouds"]
-position = Vector2( 34, 393 )
-scale = Vector2( 0.826935, 0.826935 )
-texture = ExtResource( 2 )
-
-[node name="Cloud19" type="Sprite" parent="Clouds"]
-position = Vector2( 42, 447 )
-scale = Vector2( 0.826935, 0.826935 )
-texture = ExtResource( 2 )
-
-[node name="Cloud20" type="Sprite" parent="Clouds"]
-position = Vector2( 15, 494 )
-scale = Vector2( 0.826935, 0.826935 )
-texture = ExtResource( 2 )
-
-[node name="Cloud36" type="Sprite" parent="Clouds"]
-position = Vector2( 15, 494 )
-scale = Vector2( 0.826935, 0.826935 )
-texture = ExtResource( 2 )
-
-[node name="Cloud21" type="Sprite" parent="Clouds"]
-position = Vector2( 253, 447 )
-scale = Vector2( 0.826935, 0.826935 )
-texture = ExtResource( 2 )
-
-[node name="Cloud22" type="Sprite" parent="Clouds"]
-position = Vector2( 333, 449 )
-scale = Vector2( 0.826935, 0.826935 )
-texture = ExtResource( 2 )
-
-[node name="Cloud23" type="Sprite" parent="Clouds"]
-position = Vector2( 281, 485 )
-scale = Vector2( 0.826935, 0.826935 )
-texture = ExtResource( 2 )
-
-[node name="Cloud42" type="Sprite" parent="Clouds"]
-position = Vector2( 266, 501 )
-scale = Vector2( 0.826935, 0.826935 )
-texture = ExtResource( 2 )
-
-[node name="Cloud43" type="Sprite" parent="Clouds"]
-position = Vector2( 252, 373 )
-scale = Vector2( 0.826935, 0.826935 )
-texture = ExtResource( 2 )
-
-[node name="Cloud24" type="Sprite" parent="Clouds"]
-position = Vector2( 164, 500 )
-scale = Vector2( 0.826935, 0.826935 )
-texture = ExtResource( 2 )
-
-[node name="Cloud25" type="Sprite" parent="Clouds"]
-position = Vector2( 135, 446 )
-scale = Vector2( 0.826935, 0.826935 )
-texture = ExtResource( 2 )
-
-[node name="Cloud37" type="Sprite" parent="Clouds"]
-position = Vector2( 75, 495 )
-scale = Vector2( 0.826935, 0.826935 )
-texture = ExtResource( 2 )
-
-[node name="Cloud38" type="Sprite" parent="Clouds"]
-position = Vector2( 22, 385 )
-scale = Vector2( 0.826935, 0.826935 )
-texture = ExtResource( 2 )
-
-[node name="Cloud39" type="Sprite" parent="Clouds"]
-position = Vector2( 87, 382 )
-scale = Vector2( 0.826935, 0.826935 )
-texture = ExtResource( 2 )
-
-[node name="Cloud40" type="Sprite" parent="Clouds"]
-position = Vector2( 87, 382 )
-scale = Vector2( 0.826935, 0.826935 )
-texture = ExtResource( 2 )
-
-[node name="Cloud41" type="Sprite" parent="Clouds"]
-position = Vector2( 75, 375 )
-scale = Vector2( 0.826935, 0.826935 )
-texture = ExtResource( 2 )
-
-[node name="Cloud26" type="Sprite" parent="Clouds"]
-position = Vector2( 120, 566 )
-scale = Vector2( 0.826935, 0.826935 )
-texture = ExtResource( 2 )
-
-[node name="Cloud27" type="Sprite" parent="Clouds"]
-position = Vector2( 281, 559 )
-scale = Vector2( 0.826935, 0.826935 )
-texture = ExtResource( 2 )
-
-[node name="Cloud16" type="Sprite" parent="Clouds"]
-position = Vector2( 134, 387 )
-scale = Vector2( 0.826935, 0.826935 )
-texture = ExtResource( 2 )
+anims/clouds = SubResource( 2 )

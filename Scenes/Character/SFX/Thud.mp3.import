@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Thud.mp3-65408c505bf691814be18eaf5b8734a1.mp3str"
+
+[deps]
+
+source_file="res://Scenes/Character/SFX/Thud.mp3"
+dest_files=[ "res://.import/Thud.mp3-65408c505bf691814be18eaf5b8734a1.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

@@ -1,0 +1,37 @@
+{
+	"events": [
+		{
+			"character": "",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "You've reached Heaven's gates but you are yet unworthy"
+		},
+		{
+			"character": "",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "The Jury and I have come to a decision"
+		},
+		{
+			"character": "",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "You'll be subjected to a trial back on Earth"
+		},
+		{
+			"character": "",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "As God plays dice, so shall you..."
+		},
+		{
+			"emit_signal": "new_game_dialogue_finished",
+			"event_id": "dialogic_040"
+		}
+	],
+	"metadata": {
+		"dialogic-version": "1.4.3",
+		"file": "timeline-1658028604.json",
+		"name": "NewGame"
+	}
+}
