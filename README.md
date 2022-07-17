@@ -2,7 +2,7 @@
 
 # Do it again
 
-[Itch.io](https://bluesketch.itch.io/do-it-again)
+Rate and play the game on [Itch.io!](https://bluesketch.itch.io/do-it-again)
 
 The climb to heaven isn't a one-way trip! Each life's a random factor, but you've just gotta **do it again!**
 
