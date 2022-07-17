@@ -1,4 +1,4 @@
-![dialogic-cover](https://user-images.githubusercontent.com/2206700/156223574-5052c607-408e-4143-80b5-c4aed1cf29a2.png)
+![do-it-again-cover](https://img.itch.zone/aW1nLzk0ODU4MzEucG5n/347x500/Fhy6I%2B.png)
 
 Create dialogs, characters and scenes to display conversations in your Godot games. 
 
