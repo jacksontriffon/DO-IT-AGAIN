@@ -1,4 +1,4 @@
-extends ColorRect
+extends CanvasLayer
 
 
 # Declare member variables here. Examples:
@@ -8,12 +8,14 @@ extends ColorRect
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	$AnimationPlayer.play("fade_in")
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta: float) -> void:
 #	pass
+
+
 
 
 func _on_RichTextLabel2_meta_clicked(meta) -> void:

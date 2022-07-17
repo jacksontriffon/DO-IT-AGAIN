@@ -93,7 +93,10 @@ _global_script_class_icons={
 [application]
 
 config/name="DO IT AGAIN"
+config/description="The climb to heaven isn't a one-way trip! "
 run/main_scene="res://World.tscn"
+config/icon="res://Scenes/Background/tinyjadgegodNOBG.ico"
+config/windows_native_icon="res://Scenes/Background/tinyjadgegodNOBG.ico"
 
 [autoload]
 

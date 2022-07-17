@@ -11,6 +11,8 @@ var clouds_location = Vector2(32, -900)
 var court_location = Vector2(160, -1020)
 var at_bottom = Vector2(160,90)
 
+onready var win_screen_scene = preload('res://Scenes/Court/YouWin/YouWin.tscn')
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	spawn_below_court()
@@ -18,6 +20,7 @@ func _ready() -> void:
 	Player.connect("lifted", self, '_camera_on_court')
 	Player.connect('start_bg_music', self, 'start_bg_music')
 	Player.connect('end_bg_music', self, 'stop_bg_music')
+	Player.connect("beat_the_game", self, '_trigger_win_screen')
 
 
 func spawn_at_bottom():
@@ -88,3 +91,7 @@ func stop_bg_music()->void:
 	$AnimationPlayer.play("fade_out_music")
 	yield($AnimationPlayer, "animation_finished")
 	$AudioStreamPlayer.stop()
+
+func _trigger_win_screen()->void:
+	var win_screen = win_screen_scene.instance()
+	add_child(win_screen)

@@ -8,6 +8,7 @@ onready var camera: Camera2D = $Camera2D
 func _ready() -> void:
 	_rile_up_court()
 	Player.connect("gate_opened", self, '_open_gate')
+	Player.connect("beat_the_game", self, 'play_win_sound')
 
 
 func _rile_up_court():
@@ -45,4 +46,5 @@ func _on_Area2D_body_entered(body: Node) -> void:
 		Player.win()
 		$JudgeGod.approves()
 
-
+func play_win_sound()->void:
+	$AnimationPlayer.play("Win")
