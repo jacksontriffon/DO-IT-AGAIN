@@ -151,6 +151,30 @@ tracks/10/keys = {
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ) ]
 }
+tracks/11/type = "value"
+tracks/11/path = NodePath("AbilityContainer:rect_scale")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("AbilityContainer:modulate")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
 
 [sub_resource type="Animation" id=6]
 resource_name = "default_crouch"
@@ -378,7 +402,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id=9]
 resource_name = "roll_the_dice"
-length = 3.0
+length = 5.0
 step = 0.15
 tracks/0/type = "value"
 tracks/0/path = NodePath("Beam:texture")
@@ -580,6 +604,18 @@ tracks/14/keys = {
 "update": 0,
 "values": [ -80.0, 0.0, 0.0, -80.0 ]
 }
+tracks/15/type = "value"
+tracks/15/path = NodePath("AbilityContainer:modulate")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/keys = {
+"times": PoolRealArray( 0, 1.8, 1.95, 2.1, 2.25, 2.4, 2.55, 2.7, 4.8, 4.95 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.372549 ), Color( 1, 1, 1, 0.705882 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.796078 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
 
 [sub_resource type="Animation" id=8]
 resource_name = "zap"
@@ -694,28 +730,29 @@ volume_db = 0.874
 
 [node name="AudioStreamPlayer2D2" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 10 )
+volume_db = -80.0
 
-[node name="CenterContainer" type="CenterContainer" parent="."]
+[node name="AbilityContainer" type="CenterContainer" parent="."]
 margin_left = -12.0
 margin_top = -29.0
 margin_right = 48.0
 margin_bottom = 11.0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="AbilityContainer"]
 margin_left = 2.0
 margin_top = 16.0
 margin_right = 58.0
 margin_bottom = 23.0
 
-[node name="AbilityIcon" type="Sprite" parent="CenterContainer/HBoxContainer"]
+[node name="AbilityIcon" type="Sprite" parent="AbilityContainer/HBoxContainer"]
 unique_name_in_owner = true
 position = Vector2( -12, -1 )
 texture = ExtResource( 12 )
 centered = false
 hframes = 5
-frame = 4
+frame = 1
 
-[node name="AbilityText" type="Label" parent="CenterContainer/HBoxContainer"]
+[node name="AbilityText" type="Label" parent="AbilityContainer/HBoxContainer"]
 unique_name_in_owner = true
 margin_right = 56.0
 margin_bottom = 7.0

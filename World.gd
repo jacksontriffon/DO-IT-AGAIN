@@ -38,7 +38,7 @@ func spawn_at_bottom():
 	player_camera.current = true
 	# Gain new ability
 	Player.roll_the_dice()
-	
+
 
 
 func spawn_in_court():
@@ -60,5 +60,6 @@ func spawn_new_player()->KinematicBody2D:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta: float) -> void:
-#	pass
+func _process(delta: float) -> void:
+	if Input.is_action_just_pressed('ui_restart'):
+		Player.death()

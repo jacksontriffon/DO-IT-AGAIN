@@ -13,14 +13,18 @@ var in_air := false
 var running := false
 var respawning := true
 var zapped := false
+
 var gaining_new_ability := false
 var current_ability : String
 var abilities := [
+	'Unlucky',
 	'Feather Falling',
 	'AntiGrav',
 	'Double Jump',
-	'Wall Jump'
+	'Wall Jump',
 ]
+
+
 var walking_sfx = preload('res://Scenes/Character/SFX/Walking.wav')
 var zap_sfx = preload('res://Scenes/Character/SFX/Zap.wav')
 var jump_sfx = preload('res://Scenes/Character/SFX/Jump.mp3')
@@ -42,6 +46,8 @@ onready var sprite: Sprite = $Sprite
 onready var animation: AnimationPlayer = $AnimationPlayer
 onready var camera: Camera2D = $Camera2D
 onready var audio: AudioStreamPlayer = $AudioStreamPlayer2D
+onready var ability_icon: Sprite = $"%AbilityIcon"
+onready var ability_label: Label = $"%AbilityText"
 
 
 # Called when the node enters the scene tree for the first time.
@@ -56,7 +62,7 @@ func _ready() -> void:
 	$Beam.visible = false
 	$Dice.visible = false
 	$Diamond.visible = false
-	
+	$AbilityContainer.visible = false
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -182,14 +188,19 @@ func _roll_the_dice():
 	# Start animation
 	animation.play("roll_the_dice")
 	yield(get_tree().create_timer(2), "timeout")
+	# Find Ability
 	var random_number = get_random_number()
 	_new_ability(random_number)
-	
+	$AbilityContainer.visible = true
 	yield(get_tree().create_timer(1), "timeout")
+	
 	$Beam.visible = false
 	$Dice.visible = false
 	$Diamond.visible = false
 	gaining_new_ability = false
+	
+	yield(get_tree().create_timer(6), "timeout")
+	$AbilityContainer.visible = false
 
 func get_random_number()-> int:
 	var rng = RandomNumberGenerator.new()
@@ -200,20 +211,25 @@ func get_random_number()-> int:
 
 func _new_ability(number:int)->void:
 	current_ability = abilities[number]
+	ability_label.text = current_ability
 	
 	match current_ability:
 		'Feather Falling':
-			pass
+			ability_icon.frame = 3
 		'AntiGrav':
-			pass
+			ability_icon.frame = 0
 		'Double Jump':
-			pass
+			ability_icon.frame = 2
 		'Wall Jump':
-			pass
+			ability_icon.frame = 1
 		_:
 			current_ability = 'Unlucky'
+			ability_icon.frame = 4
 	
 	print(current_ability)
+
+func _set_ability():
+	pass
 
 # --- FORCES ---
 func _apply_gravity(delta:float)->void:
