@@ -87,7 +87,6 @@ polygon = PoolVector2Array( -4, -4, -4, -6, 4, -6, 4, -2, -1, -2, -1, -1, -2, -1
 one_way_collision = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-unique_name_in_owner = true
 root_node = NodePath("../WoodenBeamMid")
 anims/Break = SubResource( 1 )
 anims/RESET = SubResource( 2 )

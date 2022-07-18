@@ -46,8 +46,8 @@ onready var sprite: Sprite = $Sprite
 onready var animation: AnimationPlayer = $AnimationPlayer
 onready var camera: Camera2D = $Camera2D
 onready var audio: AudioStreamPlayer = $AudioStreamPlayer2D
-onready var ability_icon: Sprite = $"%AbilityIcon"
-onready var ability_label: Label = $"%AbilityText"
+onready var ability_icon: Sprite = $AbilityContainer/HBoxContainer/AbilityIcon
+onready var ability_label: Label = $AbilityContainer/HBoxContainer/AbilityText
 
 var cloudhead_spritesheet = preload('res://Scenes/Character/Sprites/Cloudhead/MC-cloud-Sheet.png')
 var unlucky_spritesheet = preload('res://Scenes/Character/Sprites/Default/MC-Sheet.png')

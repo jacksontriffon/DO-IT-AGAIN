@@ -2,7 +2,7 @@ extends StaticBody2D
 
 
 var broken = true
-onready var animation: AnimationPlayer = $"%AnimationPlayer"
+onready var animation: AnimationPlayer = $AnimationPlayer
 
 
 # Called when the node enters the scene tree for the first time.
