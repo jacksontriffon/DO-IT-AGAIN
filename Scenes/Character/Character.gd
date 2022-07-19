@@ -14,6 +14,7 @@ var running := false
 var respawning := true
 var zapped := false
 var anti_gravity := false
+var double_jump_available := false
 
 
 var gaining_new_ability := false
@@ -109,15 +110,17 @@ func _physics_process(delta: float) -> void:
 		animation.play("default_idle")
 	
 	if is_on_floor():
+		if current_ability == 'Double Jump':
+			double_jump_available = true
 		# Slowed by friction
 		if not running:
 			_apply_friction()
 		# Jump 
 		if Input.is_action_pressed("ui_up"):
 			_jump()
-		elif in_air:
-			_land()
-		
+	elif Input.is_action_pressed("ui_up") and double_jump_available:
+		print('jump!')
+		_double_jump()
 	# Air friction
 	elif not running:
 		_apply_air_resistance()
@@ -157,8 +160,12 @@ func _jump()->void:
 				anti_gravity = true
 				motion.y = jump_force
 				in_air = true
-#		'Double Jump':
-#			pass
+		'Double Jump':
+			animation.play("default_jump")
+			motion.y = -jump_force
+			in_air = true
+			audio.stream = sfx.Jump
+			audio.play()
 #		'Wall Jump':
 #			pass
 		_:
@@ -169,9 +176,15 @@ func _jump()->void:
 			audio.stream = sfx.Jump
 			audio.play()
 
-func _land()->void:
-	animation.play("default_land")
-	in_air = false
+func _double_jump()->void:
+	if double_jump_available:
+		animation.play("double_jump")
+		double_jump_available = false
+		motion.y = -jump_force
+
+#func _land()->void:
+#	animation.play("default_land")
+#	in_air = false
 
 func _die()->void: # Connected to 'died' signal
 	if not Player.dead:
@@ -261,10 +274,14 @@ func _roll_the_dice():
 	$AbilityContainer.visible = false
 
 func get_random_number()-> int:
-	var rng = RandomNumberGenerator.new()
-	rng.randomize()
-	var random_number = rng.randf_range(0, 2.9) # Only first 3 values 
-	random_number = int(random_number)
+#	var rng = RandomNumberGenerator.new()
+#	rng.randomize()
+#	var random_number = rng.randf_range(0, 2.9) # Only first 3 values 
+#	random_number = int(random_number)
+	
+	# Trigger Double Jump
+	var random_number = 3
+	
 	return random_number
 
 func _new_ability(number:int)->void:
@@ -304,6 +321,7 @@ func _unlock_antigrav()->void:
 func _unlock_double_jump()->void:
 	$Sprite.texture = angel_spritesheet
 	$Sprite.hframes = 15
+	double_jump_available = true
 
 func _unlock_wall_jump()->void:
 	$Sprite.texture = ninja_spritesheet
@@ -366,3 +384,4 @@ func _apply_feather_falling(delta:float)->void:
 	jump_force = 90
 	var percentage_of_gravity = 0.2
 	motion.y += (GRAVITY * delta) * percentage_of_gravity
+
