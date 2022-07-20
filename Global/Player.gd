@@ -11,9 +11,9 @@ var slippery = false
 export var just_launched := false
 var won_this_run := false
 var music_playing := false
+var previous_ability: String
 
 signal died
-signal screen_hidden
 signal respawn
 signal on_ice
 signal off_ice
@@ -22,7 +22,6 @@ signal lifted
 signal new_game
 signal transition
 signal roll_the_dice
-signal new_ability_unlocked
 signal win
 signal gate_opened
 signal beat_the_game

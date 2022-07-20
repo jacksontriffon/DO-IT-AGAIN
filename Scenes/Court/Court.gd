@@ -2,7 +2,6 @@ extends Node2D
 
 
 onready var animation: AnimationPlayer = $AnimationPlayer
-onready var camera: Camera2D = $Camera2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -30,7 +29,7 @@ func _open_gate()->void:
 #	pass
 
 
-func _on_Area2D_body_entered(body: Node) -> void:
+func _on_Area2D_body_entered(_body: Node) -> void:
 	Player.lifted()
 	_rile_up_court()
 	Player.end_bg_music()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://Scenes/Character/Sprites/Default/Lightning-Sheet.png" type="Texture" id=1]
 [ext_resource path="res://Scenes/Character/Character.gd" type="Script" id=2]
@@ -13,7 +13,8 @@
 [ext_resource path="res://Scenes/Character/Font/New_Ability.tres" type="DynamicFont" id=11]
 [ext_resource path="res://Scenes/Character/Icon/icons-Sheet.png" type="Texture" id=12]
 [ext_resource path="res://Scenes/Character/SFX/Ability-got.wav" type="AudioStream" id=13]
-[ext_resource path="res://Scenes/Character/Sprites/Angel/MC-WingsSheet.png" type="Texture" id=14]
+[ext_resource path="res://Scenes/Character/Sprites/AntiGrav/MC-Antigrav-Sheet.png" type="Texture" id=14]
+[ext_resource path="res://Scenes/Character/SFX/DoubleJump.wav" type="AudioStream" id=15]
 
 [sub_resource type="Animation" id=2]
 length = 0.001
@@ -184,6 +185,54 @@ tracks/13/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ 15 ]
+}
+tracks/14/type = "value"
+tracks/14/path = NodePath("AudioStreamPlayer2D:stream")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ ExtResource( 13 ) ]
+}
+tracks/15/type = "value"
+tracks/15/path = NodePath("Sprite:texture")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ ExtResource( 14 ) ]
+}
+tracks/16/type = "value"
+tracks/16/path = NodePath("Sprite:flip_v")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+tracks/17/type = "value"
+tracks/17/path = NodePath("Sprite:flip_h")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
 }
 
 [sub_resource type="Animation" id=11]
@@ -520,6 +569,77 @@ tracks/0/keys = {
 "update": 1,
 "values": [ 12, 13, 14 ]
 }
+tracks/1/type = "audio"
+tracks/1/path = NodePath("AudioStreamPlayer2D")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 15 )
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 15 )
+} ],
+"times": PoolRealArray( 0, 0.001 )
+}
+
+[sub_resource type="Animation" id=13]
+resource_name = "invert_gravity"
+length = 0.3
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:hframes")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 18 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 14 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1, 0.15, 0.2, 0.25 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 12, 13, 14, 15, 16, 17 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprite:flip_v")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
 
 [sub_resource type="Animation" id=9]
 resource_name = "roll_the_dice"
@@ -738,6 +858,33 @@ tracks/15/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.372549 ), Color( 1, 1, 1, 0.705882 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.796078 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
+[sub_resource type="Animation" id=14]
+resource_name = "wall_jump"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 12, 13, 14, 7 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.3 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
 [sub_resource type="Animation" id=8]
 resource_name = "zap"
 length = 0.3
@@ -818,6 +965,8 @@ hframes = 8
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 8, 8 )
 texture = ExtResource( 14 )
+flip_h = true
+flip_v = true
 hframes = 15
 region_rect = Rect2( 0, 0, 144, 16 )
 
@@ -828,6 +977,7 @@ scale = Vector2( 1e-05, 1e-05 )
 texture = ExtResource( 7 )
 
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="."]
+visible = false
 position = Vector2( 8, 5 )
 polygon = PoolVector2Array( 2, 10, 3, 7, 5, 5, 6, 3, 7, 2, 7, 1, 7, -3, 5, -4, 4, -5, -2, -5, -4, -4, -5, -3, -5, 1, -5, 2, -5, 2, -4, 3, -4, 4, -3, 5, -3, 6, -2, 7, -1, 10 )
 
@@ -842,7 +992,9 @@ anims/default_jump = SubResource( 4 )
 anims/default_land = SubResource( 5 )
 anims/default_walk = SubResource( 1 )
 anims/double_jump = SubResource( 12 )
+anims/invert_gravity = SubResource( 13 )
 anims/roll_the_dice = SubResource( 9 )
+anims/wall_jump = SubResource( 14 )
 anims/zap = SubResource( 8 )
 
 [node name="Camera2D" parent="." instance=ExtResource( 3 )]
@@ -886,6 +1038,25 @@ margin_bottom = 7.0
 custom_fonts/font = ExtResource( 11 )
 text = "Double Jump"
 
-[node name="RayCast2D" type="RayCast2D" parent="."]
-position = Vector2( 8, 14 )
-cast_to = Vector2( 0, 5 )
+[node name="Floor" type="RayCast2D" parent="."]
+position = Vector2( 9, 9 )
+enabled = true
+cast_to = Vector2( 0, 10 )
+
+[node name="LeftWall" type="RayCast2D" parent="."]
+position = Vector2( 9, 9 )
+rotation = 1.5708
+enabled = true
+cast_to = Vector2( 0, 10 )
+
+[node name="RightWall" type="RayCast2D" parent="."]
+position = Vector2( 9, 9 )
+rotation = 4.71239
+enabled = true
+cast_to = Vector2( 0, 10 )
+
+[node name="Ceiling" type="RayCast2D" parent="."]
+position = Vector2( 9, 9 )
+rotation = 3.14159
+enabled = true
+cast_to = Vector2( 0, 10 )

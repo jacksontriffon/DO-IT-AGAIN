@@ -3,7 +3,6 @@ class_name JudgeGod
 
 
 onready var animation:AnimationPlayer = $AnimationPlayer
-signal finished_talking
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
