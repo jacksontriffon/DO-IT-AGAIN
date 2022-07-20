@@ -5,6 +5,7 @@ extends Node
 # That's done from nodes outside the autoload.
 
 var wins := []
+var camera: MainCamera = null
 
 var dead = false
 var slippery = false
@@ -27,6 +28,8 @@ signal gate_opened
 signal beat_the_game
 signal start_bg_music
 signal end_bg_music
+signal screen_shake(intensity, time, limit)
+signal follow(true_or_false)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -86,6 +89,12 @@ func end_bg_music()->void:
 	if music_playing:
 		emit_signal("end_bg_music")
 		music_playing = false
+
+func shake(intensity: float, time: float = 0.4, limit: float = 100)->void:
+	emit_signal('screen_shake', intensity, time, limit)
+
+func follow(true_or_false := true)->void:
+	emit_signal('follow', true_or_false)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta: float) -> void:

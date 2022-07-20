@@ -50,7 +50,6 @@ var sfx := {
 
 onready var sprite: Sprite = $Sprite
 onready var animation: AnimationPlayer = $AnimationPlayer
-onready var camera: Camera2D = $Camera2D
 onready var audio: AudioStreamPlayer = $AudioStreamPlayer2D
 onready var ability_icon: Sprite = $AbilityContainer/HBoxContainer/AbilityIcon
 onready var ability_label: Label = $AbilityContainer/HBoxContainer/AbilityText
@@ -193,12 +192,14 @@ func _wall_jump()->void:
 		and not $LeftWall.get_collider() is StaticBody2D:
 		animation.play("wall_jump")
 		motion.y = -jump_force
+		motion.x = jump_force / 3
 		in_air = true
 	elif $RightWall.is_colliding() and not jumped_recently \
 		and not $RightWall.get_collider() is StaticBody2D:
 		$Sprite.flip_h = true
 		animation.play("wall_jump")
 		motion.y = -jump_force
+		motion.x = -jump_force / 3
 		in_air = true
 
 func _invert_gravity()->void:
@@ -236,7 +237,6 @@ func _die()->void: # Connected to 'died' signal
 		audio.stream = sfx.Death
 		audio.play()
 		yield(animation, "animation_finished")
-		camera.current = true
 		# Trigger scene transition
 		Player.respawn()
 		queue_free()
@@ -249,6 +249,7 @@ func _respawn() -> void:
 	animation.play("default_die")
 	animation.seek(0.3)
 	
+	Player.follow(false)
 	# Thud sound ~ removed
 	var time_until_getting_up = 1.3
 	var time_until_hit_ground = 0.35
@@ -276,6 +277,7 @@ func _zap() -> void:
 		zapped = true
 		$Zap.visible = true
 		animation.play("zap")
+		Player.shake(50, 2)
 		audio.stream = sfx.Zap
 		audio.play()
 		yield(get_tree().create_timer(2), "timeout")
@@ -313,14 +315,13 @@ func _roll_the_dice():
 	$Dice.visible = false
 	$Diamond.visible = false
 	gaining_new_ability = false
+	Player.follow()
 	
 	yield(get_tree().create_timer(2), "timeout")
 	$AbilityContainer.visible = false
 
 func get_random_number()-> int:
-	var rng = RandomNumberGenerator.new()
-	rng.randomize()
-	var random_number = rng.randf_range(0, 4.9) # Only first 5 abilities
+	var random_number = rand_range(0, 4.9) # Only first 5 abilities
 	random_number = int(random_number)
 	
 	return random_number
@@ -331,7 +332,6 @@ func _new_ability()->void:
 	print('Previous ability: ',Player.previous_ability)
 	current_ability = Player.previous_ability
 	while  Player.previous_ability == current_ability:
-		print('start while loop')
 		var random_number = get_random_number()
 		if abilities[random_number] == Player.previous_ability:
 			print('we need to skip because we got  ', abilities[random_number])
@@ -438,6 +438,7 @@ func _apply_anti_gravity(delta)->void:
 		motion.y += (GRAVITY * delta)
 		anti_gravity_available = false
 		$Sprite.flip_v = false
+		flipping = false
 	elif anti_gravity:
 		motion.y -= (GRAVITY * delta)
 		motion.y = clamp(motion.y, -150, 0)

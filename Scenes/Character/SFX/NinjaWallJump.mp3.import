@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/NinjaWallJump.mp3-fd9627ac8441f18b197a457b4c6ed31c.mp3str"
+
+[deps]
+
+source_file="res://Scenes/Character/SFX/NinjaWallJump.mp3"
+dest_files=[ "res://.import/NinjaWallJump.mp3-fd9627ac8441f18b197a457b4c6ed31c.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0
