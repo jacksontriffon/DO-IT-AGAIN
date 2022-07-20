@@ -1,5 +1,6 @@
 extends Node2D
-
+var crowd_murmur = preload('res://Scenes/Court/Room/SFX/crowdtalk.wav')
+var crowd_decibels = -20
 
 onready var animation: AnimationPlayer = $AnimationPlayer
 
@@ -12,13 +13,28 @@ func _ready() -> void:
 
 func _rile_up_court():
 	animation.play("Crowd")
-	
+	$AudioStreamPlayer2.stream = crowd_murmur
+	$AudioStreamPlayer2.volume_db = crowd_decibels
+	$AudioStreamPlayer2.play()
+	$Tween.stop_all()
+	$Tween.interpolate_property($AudioStreamPlayer2, 'volume_db', -80,  crowd_decibels, 1)
+	$Tween.start()
+	Player.connect("zap", self, 'hush_crowd')
+	Player.connect('gate_opened', self, 'hush_crowd')
 	# Get Jury moving
 	$Jury/AntiGrav/AnimationPlayer.play("AntiGrav")
 	$Jury/Ninja/AnimationPlayer.play("Ninja")
 	$Jury/Angel/AnimationPlayer.play("Angel")
 	$Jury/Warrior/AnimationPlayer.play("Warrior")
 	$Jury/Cloudhead/AnimationPlayer.play("Cloudhead")
+
+func hush_crowd()->void:
+	$Tween.stop_all()
+	$Tween.interpolate_property($AudioStreamPlayer2, 'volume_db', crowd_decibels, -80, 1)
+	$Tween.start()
+	animation.stop()
+	Player.disconnect("zap", self, 'hush_crowd')
+	Player.disconnect("gate_opened", self, 'hush_crowd')
 
 func _open_gate()->void:
 	animation.play("Open_gate")
@@ -31,6 +47,7 @@ func _open_gate()->void:
 
 func _on_Area2D_body_entered(_body: Node) -> void:
 	Player.lifted()
+	Player.follow(false)
 	_rile_up_court()
 	Player.end_bg_music()
 	if Player.won_this_run:

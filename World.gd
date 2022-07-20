@@ -89,12 +89,11 @@ func _follow_player(yes:bool = true)->void:
 	else:
 		camera_follows_player = false
 
-#func _camera_on_court()->void:
-#	var starting_camera: MainCamera = camera_scene.instance()
-#	add_child(starting_camera)
-#	starting_camera.position = court_location
-#	starting_camera.current = true
-#	Player.camera = starting_camera
+
+
+func _camera_on_court()->void:
+	camera_follows_player = false
+	Player.camera.position = court_location
 
 
 func start_bg_music()->void:

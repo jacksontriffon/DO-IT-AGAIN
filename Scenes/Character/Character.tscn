@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://Scenes/Character/Sprites/Default/Lightning-Sheet.png" type="Texture" id=1]
 [ext_resource path="res://Scenes/Character/Character.gd" type="Script" id=2]
@@ -15,7 +15,6 @@
 [ext_resource path="res://Scenes/Character/SFX/Ability-got.wav" type="AudioStream" id=13]
 [ext_resource path="res://Scenes/Character/Sprites/AntiGrav/MC-Antigrav-Sheet.png" type="Texture" id=14]
 [ext_resource path="res://Scenes/Character/SFX/DoubleJump.wav" type="AudioStream" id=15]
-[ext_resource path="res://Scenes/Character/SFX/AntiGrav.mp3" type="AudioStream" id=16]
 
 [sub_resource type="Animation" id=2]
 length = 0.001
@@ -603,7 +602,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id=13]
 resource_name = "invert_gravity"
-length = 0.7
+length = 0.3
 step = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:hframes")
@@ -652,20 +651,6 @@ tracks/3/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ false, true ]
-}
-tracks/4/type = "audio"
-tracks/4/path = NodePath("AudioStreamPlayer2D")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
-"clips": [ {
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource( 16 )
-} ],
-"times": PoolRealArray( 0 )
 }
 
 [sub_resource type="Animation" id=9]

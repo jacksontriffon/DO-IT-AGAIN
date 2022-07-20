@@ -28,6 +28,7 @@ signal gate_opened
 signal beat_the_game
 signal start_bg_music
 signal end_bg_music
+signal in_court
 signal screen_shake(intensity, time, limit)
 signal follow(true_or_false)
 
@@ -95,6 +96,9 @@ func shake(intensity: float, time: float = 0.4, limit: float = 100)->void:
 
 func follow(true_or_false := true)->void:
 	emit_signal('follow', true_or_false)
+
+func in_court()->void:
+	emit_signal("in_court")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta: float) -> void:

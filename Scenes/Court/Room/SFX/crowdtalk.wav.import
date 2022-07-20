@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/crowdtalk.wav-71a116f6e4140e4e78684de709c64c12.sample"
+
+[deps]
+
+source_file="res://Scenes/Court/Room/SFX/crowdtalk.wav"
+dest_files=[ "res://.import/crowdtalk.wav-71a116f6e4140e4e78684de709c64c12.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=false
+edit/loop=true
+compress/mode=0

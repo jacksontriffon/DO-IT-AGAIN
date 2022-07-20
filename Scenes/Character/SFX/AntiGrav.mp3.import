@@ -11,5 +11,5 @@ dest_files=[ "res://.import/AntiGrav.mp3-546c547e6df8fb2e1f599c115f4448fd.mp3str
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0
