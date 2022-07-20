@@ -340,11 +340,6 @@ func _new_ability()->void:
 			current_ability = abilities[random_number]
 			print('new ability! ', current_ability)
 	
-	# ---------------------------
-	# Remove: Set Wall jump
-	current_ability = 'Wall Jump'
-	# ---------------------------
-	
 	# Set new ability
 	ability_label.text = current_ability
 	
