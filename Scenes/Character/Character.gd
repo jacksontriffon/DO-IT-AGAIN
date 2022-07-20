@@ -38,6 +38,7 @@ var dice_sfx = preload('res://Scenes/Character/SFX/Dice.wav')
 var death_sfx = preload('res://Scenes/Character/SFX/Death.wav')
 var thud_sfx = preload('res://Scenes/Character/SFX/Thud.mp3')
 var double_jump_sfx = preload('res://Scenes/Character/SFX/DoubleJump.wav')
+var anti_grav_sfx = preload('res://Scenes/Character/SFX/AntiGrav.mp3')
 var sfx := {
 	'Walking': walking_sfx,
 	'Zap': zap_sfx,
@@ -45,7 +46,8 @@ var sfx := {
 	'Dice': dice_sfx,
 	'Death': death_sfx,
 	'Thud': thud_sfx,
-	'DoubleJump': double_jump_sfx
+	'DoubleJump': double_jump_sfx,
+	'Antigrav': anti_grav_sfx
 }
 
 onready var sprite: Sprite = $Sprite
@@ -209,21 +211,28 @@ func _invert_gravity()->void:
 	# Upside down
 	if $Ceiling.is_colliding():
 		animation.play_backwards("invert_gravity")
+		# Motion
 		motion.y = -jump_force
 		anti_gravity = false
-		
+		# Sound
+		$AudioStreamPlayer2D.stream = sfx.Antigrav
+		$AudioStreamPlayer2D.play()
 		# Animation
 		yield(animation, "animation_finished")
 		flipping = false
 	# Normal + Inverse gravity
 	elif $Floor.is_colliding():
 		animation.play("invert_gravity")
+		# Motion
 		motion.y = jump_force
 		anti_gravity = true
-		
+		# Sound
+		$AudioStreamPlayer2D.stream = sfx.Antigrav
+		$AudioStreamPlayer2D.play()
 		# Animation
 		yield(animation, "animation_finished")
 		flipping = false
+	flipping = false
 
 #func _land()->void:
 #	animation.play("default_land")
@@ -339,6 +348,12 @@ func _new_ability()->void:
 			# Set new ability
 			current_ability = abilities[random_number]
 			print('new ability! ', current_ability)
+	
+#	--------------------------
+#	# Remove
+	current_ability = 'AntiGrav'
+#	----------------------------
+	
 	
 	# Set new ability
 	ability_label.text = current_ability

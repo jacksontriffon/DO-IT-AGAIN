@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Gavel.wav-f0f31787ebd6ba44df39752fbd1056bc.sample"
+
+[deps]
+
+source_file="res://Scenes/Court/JudgeGod/sfx/Gavel.wav"
+dest_files=[ "res://.import/Gavel.wav-f0f31787ebd6ba44df39752fbd1056bc.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
