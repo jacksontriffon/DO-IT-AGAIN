@@ -96,7 +96,6 @@ func _physics_process(delta: float) -> void:
 		
 	# Get motion
 	motion = move_and_slide(motion, Vector2.UP)
-#	_apply_falling_death(motion)
 	
 	# Prevent everything
 	if Player.dead or respawning or zapped or gaining_new_ability:
@@ -236,10 +235,6 @@ func _invert_gravity()->void:
 		flipping = false
 	flipping = false
 
-#func _land()->void:
-#	animation.play("default_land")
-#	in_air = false
-
 func _die()->void: # Connected to 'died' signal
 	if not Player.dead:
 		Player.dead = true
@@ -265,12 +260,8 @@ func _respawn() -> void:
 	var time_until_getting_up = 1.3
 	var time_until_hit_ground = 0.35
 	yield(get_tree().create_timer(time_until_hit_ground),"timeout")
-#	audio.stream = sfx.Thud
-#	audio.volume_db = 0
-##	audio.play()
 	var time_left = time_until_getting_up - time_until_hit_ground
 	yield(get_tree().create_timer(time_left),"timeout")
-#	audio.volume_db = 0
 	
 	if not gaining_new_ability:
 		# Getting up animation
@@ -353,7 +344,7 @@ func _new_ability()->void:
 	
 #	--------------------------
 #	# Remove
-	current_ability = 'AntiGrav'
+#	current_ability = 'AntiGrav'
 #	----------------------------
 	
 	
@@ -424,24 +415,7 @@ func _apply_acceleration(x_input:float, delta:float)->void:
 func _apply_air_resistance()->void:
 	motion.x = lerp(motion.x, 0, AIR_RESISTANCE)
 
-# Removed ~
-#func _apply_falling_death(motion: Vector2)->void:
-#	var normal_camera_height = -45
-#	var distance_from_camera = (camera.get_camera_position().y - position.y) - normal_camera_height
-#	var max_distance_from_camera = 0
-#	# Find when offscreen
-#	var offscreen = (max_distance_from_camera - distance_from_camera) < 0
-#	if offscreen:
-#		print(distance_from_camera)
-#		print(offscreen)
-##	if distance_from_camera < 0: 
-##		print(distance_from_camera, ' | motion: ' + str(motion) + ' | Viewport:' + str(get_viewport().get_position_in_parent()))
-##
-#
-#	# Die when offscreen and moving too fast
-#	if motion.y > 600 and offscreen and not respawning:
-#		print(distance_from_camera, ' | ' + str(motion))
-		
+# Removed ~ apply_falling_death
 
 func _apply_slipping()->void:
 	friction = 0.01

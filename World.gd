@@ -109,7 +109,6 @@ func _camera_on_court()->void:
 func start_bg_music()->void:
 	$AudioStreamPlayer.play()
 	$AudioAnimationPlayer.play("fade_in_music")
-	print('playing')
 
 func stop_bg_music()->void:
 	$AudioAnimationPlayer.play("fade_out_music")
