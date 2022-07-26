@@ -101,6 +101,8 @@ _global_script_class_icons={
 config/name="DO IT AGAIN"
 config/description="The climb to heaven isn't a one-way trip! "
 run/main_scene="res://World.tscn"
+boot_splash/image="res://Vyfrost/BootSplash-640x360.png"
+boot_splash/bg_color=Color( 0, 0, 0, 1 )
 config/icon="res://Scenes/Background/tinyjadgegodNOBG.ico"
 config/windows_native_icon="res://Scenes/Background/tinyjadgegodNOBG.ico"
 

@@ -29,6 +29,7 @@ signal beat_the_game
 signal start_bg_music
 signal end_bg_music
 signal in_court
+signal inverted_gravity(boolean)
 signal screen_shake(intensity, time, limit)
 signal follow(true_or_false)
 
@@ -100,6 +101,8 @@ func follow(true_or_false := true)->void:
 func in_court()->void:
 	emit_signal("in_court")
 
+func invert_gravity(boolean: bool)->void:
+	emit_signal("inverted_gravity", boolean)
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta: float) -> void:
 #	pass

@@ -17,6 +17,7 @@ onready var win_screen_scene = preload('res://Scenes/Court/YouWin/YouWin.tscn')
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	$AnimationPlayer.play("fade-in-world")
 	new_camera()
 	spawn_in_court()
 	Player.connect("respawn", self, 'spawn_at_bottom')
@@ -25,6 +26,8 @@ func _ready() -> void:
 	Player.connect('end_bg_music', self, 'stop_bg_music')
 	Player.connect("beat_the_game", self, '_trigger_win_screen')
 	Player.connect('follow', self, '_follow_player')
+	Player.connect("inverted_gravity", self, 'invert_gravity')
+	Player.connect("respawn", self, 'invert_gravity', [false])
 
 
 func spawn_at_bottom():
@@ -63,8 +66,8 @@ func spawn_below_court()->void:
 func spawn_new_player()->KinematicBody2D:
 	var character = character_scene.instance()
 	current_character = character
-	$YSort.add_child(character)
-	$YSort.move_child(character, 0)
+	$CanvasModulate/YSort.add_child(character)
+	$CanvasModulate/YSort.move_child(character, 0)
 	return character
 
 func new_camera()->MainCamera:
@@ -108,3 +111,11 @@ func stop_bg_music()->void:
 func _trigger_win_screen()->void:
 	var win_screen = win_screen_scene.instance()
 	add_child(win_screen)
+
+func invert_gravity(boolean: bool)->void:
+	# Make some cool effects
+	if boolean:
+		$AnimationPlayer.play("tint_purple")
+	# Don't
+	else:
+		$AnimationPlayer.play_backwards("tint_purple")

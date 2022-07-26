@@ -210,6 +210,7 @@ func _invert_gravity()->void:
 	flipping = true
 	# Upside down
 	if $Ceiling.is_colliding():
+		Player.invert_gravity(false)
 		animation.play_backwards("invert_gravity")
 		# Motion
 		motion.y = -jump_force
@@ -222,6 +223,7 @@ func _invert_gravity()->void:
 		flipping = false
 	# Normal + Inverse gravity
 	elif $Floor.is_colliding():
+		Player.invert_gravity(true)
 		animation.play("invert_gravity")
 		# Motion
 		motion.y = jump_force
@@ -351,7 +353,7 @@ func _new_ability()->void:
 	
 #	--------------------------
 #	# Remove
-	current_ability = 'AntiGrav'
+#	current_ability = 'AntiGrav'
 #	----------------------------
 	
 	
