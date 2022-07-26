@@ -13,6 +13,8 @@ var at_bottom = Vector2(160,90)
 var camera_follows_player = false
 var current_character : KinematicBody2D
 
+var screen_is_purple = false
+
 onready var win_screen_scene = preload('res://Scenes/Court/YouWin/YouWin.tscn')
 
 # Called when the node enters the scene tree for the first time.
@@ -27,7 +29,11 @@ func _ready() -> void:
 	Player.connect("beat_the_game", self, '_trigger_win_screen')
 	Player.connect('follow', self, '_follow_player')
 	Player.connect("inverted_gravity", self, 'invert_gravity')
+	# Disable anti gravity in court
 	Player.connect("respawn", self, 'invert_gravity', [false])
+	yield($AnimationPlayer, "animation_finished")
+	# Prevents checking for player beat this run
+	Player.just_launched = false
 
 
 func spawn_at_bottom():
@@ -46,6 +52,7 @@ func spawn_at_bottom():
 	Player.camera.current = true
 	# Gain new ability
 	Player.roll_the_dice()
+	
 
 
 
@@ -101,11 +108,12 @@ func _camera_on_court()->void:
 
 func start_bg_music()->void:
 	$AudioStreamPlayer.play()
-	$AnimationPlayer.play("fade_in_music")
+	$AudioAnimationPlayer.play("fade_in_music")
+	print('playing')
 
 func stop_bg_music()->void:
-	$AnimationPlayer.play("fade_out_music")
-	yield($AnimationPlayer, "animation_finished")
+	$AudioAnimationPlayer.play("fade_out_music")
+	yield($AudioAnimationPlayer, "animation_finished")
 	$AudioStreamPlayer.stop()
 
 func _trigger_win_screen()->void:
@@ -116,6 +124,10 @@ func invert_gravity(boolean: bool)->void:
 	# Make some cool effects
 	if boolean:
 		$AnimationPlayer.play("tint_purple")
+		screen_is_purple = true
 	# Don't
-	else:
+	elif screen_is_purple:
 		$AnimationPlayer.play_backwards("tint_purple")
+		screen_is_purple = false
+
+

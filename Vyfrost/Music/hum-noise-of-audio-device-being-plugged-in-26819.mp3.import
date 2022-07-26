@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/hum-noise-of-audio-device-being-plugged-in-26819.mp3-5479702299db846c7fe771a1b96d7b81.mp3str"
+
+[deps]
+
+source_file="res://Vyfrost/Music/hum-noise-of-audio-device-being-plugged-in-26819.mp3"
+dest_files=[ "res://.import/hum-noise-of-audio-device-being-plugged-in-26819.mp3-5479702299db846c7fe771a1b96d7b81.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

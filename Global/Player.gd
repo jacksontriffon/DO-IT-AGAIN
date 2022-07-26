@@ -36,9 +36,6 @@ signal follow(true_or_false)
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	just_launched = true
-	yield(get_tree().create_timer(1), "timeout")
-	just_launched = false
-	pass # Replace with function body.
 
 func death() -> void:
 	emit_signal("died")

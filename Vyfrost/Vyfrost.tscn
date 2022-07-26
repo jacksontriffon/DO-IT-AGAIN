@@ -1,8 +1,10 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Vyfrost/Vyfrost.tres" type="DynamicFont" id=1]
-[ext_resource path="res://Vyfrost/Vyfrost-Sheet.png" type="Texture" id=2]
+[ext_resource path="res://Vyfrost/Sprites/Vyfrost-Sheet.png" type="Texture" id=2]
 [ext_resource path="res://Vyfrost/Vyfrost.gd" type="Script" id=3]
+[ext_resource path="res://Vyfrost/Music/Text-glitch.wav" type="AudioStream" id=4]
+[ext_resource path="res://Vyfrost/Music/Screen-glitch.wav" type="AudioStream" id=5]
 
 [sub_resource type="Animation" id=1]
 length = 0.001
@@ -197,6 +199,18 @@ tracks/15/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ Plane( 0, 0, 1, 1 ) ]
+}
+tracks/16/type = "value"
+tracks/16/path = NodePath("../AudioStreamPlayer:stream")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ ExtResource( 4 ) ]
 }
 
 [sub_resource type="Animation" id=2]
@@ -395,6 +409,24 @@ tracks/15/keys = {
 "update": 0,
 "values": [ Plane( 0, 0, 1, 1 ) ]
 }
+tracks/16/type = "audio"
+tracks/16/path = NodePath("../AudioStreamPlayer")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/keys = {
+"clips": [ {
+"end_offset": 1.10724,
+"start_offset": 0.0,
+"stream": ExtResource( 5 )
+}, {
+"end_offset": 0.808317,
+"start_offset": 0.0,
+"stream": ExtResource( 4 )
+} ],
+"times": PoolRealArray( -0.05, 1.1 )
+}
 
 [sub_resource type="Shader" id=3]
 code = "shader_type canvas_item;
@@ -512,3 +544,6 @@ custom_fonts/font = ExtResource( 1 )
 text = "Vyfrost games"
 align = 1
 percent_visible = 0.0
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )

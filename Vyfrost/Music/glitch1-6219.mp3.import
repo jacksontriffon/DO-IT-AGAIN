@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/glitch1-6219.mp3-e5cafde4481bed8e48f3dd567f667026.mp3str"
+
+[deps]
+
+source_file="res://Vyfrost/Music/glitch1-6219.mp3"
+dest_files=[ "res://.import/glitch1-6219.mp3-e5cafde4481bed8e48f3dd567f667026.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

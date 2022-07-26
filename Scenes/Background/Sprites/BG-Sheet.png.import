@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/BootSplash-640x360.png-90cb43373b848b073f76462ddce308bf.stex"
+path="res://.import/BG-Sheet.png-c814afcc759f6addc3dbee480fbeb5a2.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Vyfrost/BootSplash-640x360.png"
-dest_files=[ "res://.import/BootSplash-640x360.png-90cb43373b848b073f76462ddce308bf.stex" ]
+source_file="res://Scenes/Background/Sprites/BG-Sheet.png"
+dest_files=[ "res://.import/BG-Sheet.png-c814afcc759f6addc3dbee480fbeb5a2.stex" ]
 
 [params]
 

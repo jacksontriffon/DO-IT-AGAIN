@@ -12,6 +12,7 @@ func _ready() -> void:
 	$AnimationPlayer.play("glitch-in-vyfrost")
 	yield($AnimationPlayer, "animation_finished")
 	get_tree().change_scene_to(world)
+	queue_free()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

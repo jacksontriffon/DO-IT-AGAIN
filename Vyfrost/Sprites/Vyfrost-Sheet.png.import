@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Vyfrost-Sheet.png-0525ef23580ada43b1d7f768d24fe4ac.stex"
+path="res://.import/Vyfrost-Sheet.png-260211e3d01b2f0c60d6639e4f13d968.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Vyfrost/Vyfrost-Sheet.png"
-dest_files=[ "res://.import/Vyfrost-Sheet.png-0525ef23580ada43b1d7f768d24fe4ac.stex" ]
+source_file="res://Vyfrost/Sprites/Vyfrost-Sheet.png"
+dest_files=[ "res://.import/Vyfrost-Sheet.png-260211e3d01b2f0c60d6639e4f13d968.stex" ]
 
 [params]
 

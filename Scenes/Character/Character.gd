@@ -353,7 +353,7 @@ func _new_ability()->void:
 	
 #	--------------------------
 #	# Remove
-#	current_ability = 'AntiGrav'
+	current_ability = 'AntiGrav'
 #	----------------------------
 	
 	
