@@ -216,7 +216,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ -51.159, -5.692 ]
+"values": [ -51.159, -11.0 ]
 }
 
 [sub_resource type="Animation" id=20]
@@ -232,7 +232,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 2 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ -5.692, -46.79 ]
+"values": [ -11.0, -46.79 ]
 }
 
 [sub_resource type="Animation" id=21]

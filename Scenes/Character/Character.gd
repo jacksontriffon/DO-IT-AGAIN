@@ -191,6 +191,7 @@ func _double_jump()->void:
 func _wall_jump()->void:
 	if $LeftWall.is_colliding() and not jumped_recently \
 		and not $LeftWall.get_collider() is StaticBody2D:
+		animation.stop()
 		animation.play("wall_jump")
 		motion.y = -jump_force
 		motion.x = jump_force / 3
@@ -198,6 +199,7 @@ func _wall_jump()->void:
 	elif $RightWall.is_colliding() and not jumped_recently \
 		and not $RightWall.get_collider() is StaticBody2D:
 		$Sprite.flip_h = true
+		animation.stop()
 		animation.play("wall_jump")
 		motion.y = -jump_force
 		motion.x = -jump_force / 3
@@ -241,6 +243,7 @@ func _die()->void: # Connected to 'died' signal
 		Player.previous_ability = current_ability
 		animation.play("default_die")
 		audio.stream = sfx.Death
+		audio.volume_db = -5
 		audio.play()
 		yield(animation, "animation_finished")
 		# Trigger scene transition

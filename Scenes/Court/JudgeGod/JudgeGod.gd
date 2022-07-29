@@ -17,7 +17,6 @@ func new_game() -> void:
 
 func do_it_again()-> void:
 	if not Player.just_launched:
-		print('do_it_again')
 		animation.play("Talk")
 		var dialogue = Dialogic.start('DOITAGAIN')
 		add_child(dialogue)
