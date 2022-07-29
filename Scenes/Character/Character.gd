@@ -284,6 +284,7 @@ func _zap() -> void:
 		animation.play("zap")
 		Player.shake(50, 2)
 		audio.stream = sfx.Zap
+		audio.volume_db = 0
 		audio.play()
 		yield(get_tree().create_timer(2), "timeout")
 		$Zap.visible = false
@@ -324,6 +325,10 @@ func _roll_the_dice():
 	
 	yield(get_tree().create_timer(2), "timeout")
 	$AbilityContainer.visible = false
+	
+	if Player.first_run and current_ability != 'Unlucky':
+		Player.trigger_tutorial('first')
+		Player.first_run = false
 
 func get_random_number(max_number: float)-> int:
 	var random_generator = RandomNumberGenerator.new()

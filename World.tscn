@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://Scenes/Blocks/WoodenBeam/WoodenBeamMid.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Blocks/Spikes/Spikes.tscn" type="PackedScene" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://Scenes/Blocks/WoodenBeam/WoodenBeamLeft.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Scenes/Background/Music/SlyCooper.wav" type="AudioStream" id=8]
 [ext_resource path="res://Scenes/Blocks/WoodenBeam/WoodenBeamRight.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Scenes/Background/ControlsTutorial/Tutorial.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Scenes/Blocks/Ice/Ice.tscn" type="PackedScene" id=11]
 
 [sub_resource type="Animation" id=14]
@@ -38,7 +39,7 @@ tracks/1/keys = {
 "values": [ Color( 1, 1, 1, 1 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("CanvasLayer/ColorRect:modulate")
+tracks/2/path = NodePath("Fade-in/ColorRect:modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -65,7 +66,7 @@ tracks/3/keys = {
 [sub_resource type="Animation" id=16]
 resource_name = "fade-in-world"
 tracks/0/type = "value"
-tracks/0/path = NodePath("CanvasLayer/ColorRect:modulate")
+tracks/0/path = NodePath("Fade-in/ColorRect:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -164,7 +165,7 @@ tracks/1/keys = {
 "values": [ Color( 1, 1, 1, 1 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("CanvasLayer/ColorRect:modulate")
+tracks/2/path = NodePath("Fade-in/ColorRect:modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -191,7 +192,7 @@ tracks/3/keys = {
 [sub_resource type="Animation" id=18]
 resource_name = "fade-in-world"
 tracks/0/type = "value"
-tracks/0/path = NodePath("CanvasLayer/ColorRect:modulate")
+tracks/0/path = NodePath("Fade-in/ColorRect:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -213,10 +214,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ -51.159, -11.0 ]
+"values": [ -80.0, -24.941, -11.0 ]
 }
 
 [sub_resource type="Animation" id=20]
@@ -276,7 +277,7 @@ margin_bottom = 1.0
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 8 )
-volume_db = -51.159
+volume_db = -80.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/RESET = SubResource( 14 )
@@ -570,9 +571,11 @@ shape = SubResource( 11 )
 [node name="Court" parent="CanvasModulate/YSort" instance=ExtResource( 4 )]
 position = Vector2( 0, -1110 )
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="Fade-in" type="CanvasLayer" parent="."]
 
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+[node name="ColorRect" type="ColorRect" parent="Fade-in"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color( 0, 0, 0, 1 )
+
+[node name="Tutorial" parent="." instance=ExtResource( 10 )]

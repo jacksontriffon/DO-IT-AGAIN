@@ -1,0 +1,176 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Scenes/Background/ControlsTutorial/Font/Tutorial_Font.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Scenes/Background/ControlsTutorial/Sprites/RKey.png" type="Texture" id=2]
+[ext_resource path="res://Scenes/Background/ControlsTutorial/Sprites/UpKey.tres" type="Texture" id=3]
+[ext_resource path="res://Scenes/Background/ControlsTutorial/Tutorial.gd" type="Script" id=4]
+
+[sub_resource type="Animation" id=1]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("MarginContainer/VBoxContainer/Respawn:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("MarginContainer/VBoxContainer/Respawn:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("MarginContainer/VBoxContainer/Ability:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("MarginContainer/VBoxContainer/Ability:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "using_ability"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("MarginContainer/VBoxContainer/Ability:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 0.9, 1.4, 1.8, 2.2, 3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.611765 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.643137 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("MarginContainer/VBoxContainer/Ability:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "using_respawn"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("MarginContainer/VBoxContainer/Respawn:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 0.9, 1.4, 1.8, 2.2, 3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.572549 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.639216 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("MarginContainer/VBoxContainer/Respawn:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
+[node name="CanvasLayer" type="CanvasLayer"]
+script = ExtResource( 4 )
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+margin_right = 111.0
+margin_bottom = 45.0
+custom_constants/margin_right = 0
+custom_constants/margin_top = 8
+custom_constants/margin_left = 8
+custom_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 111.0
+margin_bottom = 44.0
+
+[node name="Respawn" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+visible = false
+modulate = Color( 1, 1, 1, 0 )
+margin_right = 103.0
+margin_bottom = 16.0
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/Respawn"]
+margin_right = 16.0
+margin_bottom = 16.0
+texture = ExtResource( 2 )
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Respawn"]
+margin_left = 20.0
+margin_top = 4.0
+margin_right = 72.0
+margin_bottom = 11.0
+custom_colors/font_color = Color( 0.121569, 0.133333, 0.137255, 1 )
+custom_fonts/font = ExtResource( 1 )
+text = "to respawn"
+
+[node name="Ability" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+visible = false
+modulate = Color( 1, 1, 1, 0 )
+margin_top = 20.0
+margin_right = 103.0
+margin_bottom = 36.0
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/Ability"]
+margin_right = 16.0
+margin_bottom = 16.0
+texture = ExtResource( 3 )
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Ability"]
+margin_left = 20.0
+margin_top = 4.0
+margin_right = 89.0
+margin_bottom = 11.0
+custom_colors/font_color = Color( 0.121569, 0.133333, 0.137255, 1 )
+custom_fonts/font = ExtResource( 1 )
+text = "to use ability"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 1 )
+anims/using_ability = SubResource( 3 )
+anims/using_respawn = SubResource( 2 )

@@ -14,6 +14,7 @@ var won_this_run := false
 var music_playing := false
 var previous_ability: String
 var abilities_to_choose_from := []
+var first_run := true
 
 signal died
 signal respawn
@@ -33,6 +34,7 @@ signal in_court
 signal inverted_gravity(boolean)
 signal screen_shake(intensity, time, limit)
 signal follow(true_or_false)
+signal tutorial(tut_name)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -101,6 +103,13 @@ func in_court()->void:
 
 func invert_gravity(boolean: bool)->void:
 	emit_signal("inverted_gravity", boolean)
+
+func trigger_tutorial(tut_name:String)->void:
+	emit_signal("tutorial", tut_name)
+
+
+
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta: float) -> void:
 #	pass

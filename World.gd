@@ -52,7 +52,6 @@ func spawn_at_bottom():
 	Player.camera.current = true
 	# Gain new ability
 	Player.roll_the_dice()
-	
 
 
 
