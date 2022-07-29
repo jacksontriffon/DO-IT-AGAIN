@@ -37,7 +37,7 @@ tracks/2/path = NodePath("Sprite:material:shader_param/pixel")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
-tracks/2/enabled = true
+tracks/2/enabled = false
 tracks/2/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
@@ -49,7 +49,7 @@ tracks/3/path = NodePath("Sprite:material:shader_param/red_offset")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
-tracks/3/enabled = true
+tracks/3/enabled = false
 tracks/3/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
@@ -61,7 +61,7 @@ tracks/4/path = NodePath("Sprite:material:shader_param/green_offset")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
-tracks/4/enabled = true
+tracks/4/enabled = false
 tracks/4/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
@@ -73,7 +73,7 @@ tracks/5/path = NodePath("Sprite:material:shader_param/blue_offset")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
-tracks/5/enabled = true
+tracks/5/enabled = false
 tracks/5/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
@@ -85,7 +85,7 @@ tracks/6/path = NodePath("Sprite:material:shader_param/rand_strength")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/imported = false
-tracks/6/enabled = true
+tracks/6/enabled = false
 tracks/6/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
@@ -97,7 +97,7 @@ tracks/7/path = NodePath("Sprite:material:shader_param/alpha")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/imported = false
-tracks/7/enabled = true
+tracks/7/enabled = false
 tracks/7/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
@@ -109,7 +109,7 @@ tracks/8/path = NodePath("Sprite:material:shader_param/affected")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/imported = false
-tracks/8/enabled = true
+tracks/8/enabled = false
 tracks/8/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
@@ -117,96 +117,12 @@ tracks/8/keys = {
 "values": [ Plane( 0.1, 0.1, 2, 2 ) ]
 }
 tracks/9/type = "value"
-tracks/9/path = NodePath("VBoxContainer/Label:material:shader_param/pixel")
+tracks/9/path = NodePath("../AudioStreamPlayer:stream")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/imported = false
 tracks/9/enabled = true
 tracks/9/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ 1.0 ]
-}
-tracks/10/type = "value"
-tracks/10/path = NodePath("VBoxContainer/Label:material:shader_param/red_offset")
-tracks/10/interp = 1
-tracks/10/loop_wrap = true
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 0, 0 ) ]
-}
-tracks/11/type = "value"
-tracks/11/path = NodePath("VBoxContainer/Label:material:shader_param/green_offset")
-tracks/11/interp = 1
-tracks/11/loop_wrap = true
-tracks/11/imported = false
-tracks/11/enabled = true
-tracks/11/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 0, 0 ) ]
-}
-tracks/12/type = "value"
-tracks/12/path = NodePath("VBoxContainer/Label:material:shader_param/blue_offset")
-tracks/12/interp = 1
-tracks/12/loop_wrap = true
-tracks/12/imported = false
-tracks/12/enabled = true
-tracks/12/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 0, 0 ) ]
-}
-tracks/13/type = "value"
-tracks/13/path = NodePath("VBoxContainer/Label:material:shader_param/alpha")
-tracks/13/interp = 1
-tracks/13/loop_wrap = true
-tracks/13/imported = false
-tracks/13/enabled = true
-tracks/13/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ 1.0 ]
-}
-tracks/14/type = "value"
-tracks/14/path = NodePath("VBoxContainer/Label:material:shader_param/rand_strength")
-tracks/14/interp = 1
-tracks/14/loop_wrap = true
-tracks/14/imported = false
-tracks/14/enabled = true
-tracks/14/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ 1.0 ]
-}
-tracks/15/type = "value"
-tracks/15/path = NodePath("VBoxContainer/Label:material:shader_param/affected")
-tracks/15/interp = 1
-tracks/15/loop_wrap = true
-tracks/15/imported = false
-tracks/15/enabled = true
-tracks/15/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Plane( 0, 0, 1, 1 ) ]
-}
-tracks/16/type = "value"
-tracks/16/path = NodePath("../AudioStreamPlayer:stream")
-tracks/16/interp = 1
-tracks/16/loop_wrap = true
-tracks/16/imported = false
-tracks/16/enabled = true
-tracks/16/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
@@ -246,7 +162,7 @@ tracks/2/path = NodePath("Sprite:material:shader_param/pixel")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
-tracks/2/enabled = true
+tracks/2/enabled = false
 tracks/2/keys = {
 "times": PoolRealArray( 2, 2.05 ),
 "transitions": PoolRealArray( 1, 1 ),
@@ -258,7 +174,7 @@ tracks/3/path = NodePath("Sprite:material:shader_param/red_offset")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
-tracks/3/enabled = true
+tracks/3/enabled = false
 tracks/3/keys = {
 "times": PoolRealArray( 2 ),
 "transitions": PoolRealArray( 1 ),
@@ -270,7 +186,7 @@ tracks/4/path = NodePath("Sprite:material:shader_param/green_offset")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
-tracks/4/enabled = true
+tracks/4/enabled = false
 tracks/4/keys = {
 "times": PoolRealArray( 2, 2.05 ),
 "transitions": PoolRealArray( 1, 1 ),
@@ -282,7 +198,7 @@ tracks/5/path = NodePath("Sprite:material:shader_param/blue_offset")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
-tracks/5/enabled = true
+tracks/5/enabled = false
 tracks/5/keys = {
 "times": PoolRealArray( 2, 2.05 ),
 "transitions": PoolRealArray( 1, 1 ),
@@ -294,7 +210,7 @@ tracks/6/path = NodePath("Sprite:material:shader_param/rand_strength")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/imported = false
-tracks/6/enabled = true
+tracks/6/enabled = false
 tracks/6/keys = {
 "times": PoolRealArray( 2, 2.05 ),
 "transitions": PoolRealArray( 1, 1 ),
@@ -306,7 +222,7 @@ tracks/7/path = NodePath("Sprite:material:shader_param/alpha")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/imported = false
-tracks/7/enabled = true
+tracks/7/enabled = false
 tracks/7/keys = {
 "times": PoolRealArray( 2, 2.05 ),
 "transitions": PoolRealArray( 1, 1 ),
@@ -318,7 +234,7 @@ tracks/8/path = NodePath("Sprite:material:shader_param/affected")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/imported = false
-tracks/8/enabled = true
+tracks/8/enabled = false
 tracks/8/keys = {
 "times": PoolRealArray( 2, 2.05 ),
 "transitions": PoolRealArray( 1, 1 ),
@@ -330,7 +246,7 @@ tracks/9/path = NodePath("VBoxContainer/Label:material:shader_param/pixel")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/imported = false
-tracks/9/enabled = true
+tracks/9/enabled = false
 tracks/9/keys = {
 "times": PoolRealArray( 2 ),
 "transitions": PoolRealArray( 1 ),
@@ -342,7 +258,7 @@ tracks/10/path = NodePath("VBoxContainer/Label:material:shader_param/red_offset"
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/imported = false
-tracks/10/enabled = true
+tracks/10/enabled = false
 tracks/10/keys = {
 "times": PoolRealArray( 2 ),
 "transitions": PoolRealArray( 1 ),
@@ -354,7 +270,7 @@ tracks/11/path = NodePath("VBoxContainer/Label:material:shader_param/green_offse
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/imported = false
-tracks/11/enabled = true
+tracks/11/enabled = false
 tracks/11/keys = {
 "times": PoolRealArray( 2 ),
 "transitions": PoolRealArray( 1 ),
@@ -366,7 +282,7 @@ tracks/12/path = NodePath("VBoxContainer/Label:material:shader_param/blue_offset
 tracks/12/interp = 1
 tracks/12/loop_wrap = true
 tracks/12/imported = false
-tracks/12/enabled = true
+tracks/12/enabled = false
 tracks/12/keys = {
 "times": PoolRealArray( 2 ),
 "transitions": PoolRealArray( 1 ),
@@ -378,7 +294,7 @@ tracks/13/path = NodePath("VBoxContainer/Label:material:shader_param/alpha")
 tracks/13/interp = 1
 tracks/13/loop_wrap = true
 tracks/13/imported = false
-tracks/13/enabled = true
+tracks/13/enabled = false
 tracks/13/keys = {
 "times": PoolRealArray( 2 ),
 "transitions": PoolRealArray( 1 ),
@@ -390,7 +306,7 @@ tracks/14/path = NodePath("VBoxContainer/Label:material:shader_param/rand_streng
 tracks/14/interp = 1
 tracks/14/loop_wrap = true
 tracks/14/imported = false
-tracks/14/enabled = true
+tracks/14/enabled = false
 tracks/14/keys = {
 "times": PoolRealArray( 2 ),
 "transitions": PoolRealArray( 1 ),
@@ -402,7 +318,7 @@ tracks/15/path = NodePath("VBoxContainer/Label:material:shader_param/affected")
 tracks/15/interp = 1
 tracks/15/loop_wrap = true
 tracks/15/imported = false
-tracks/15/enabled = true
+tracks/15/enabled = false
 tracks/15/keys = {
 "times": PoolRealArray( 2 ),
 "transitions": PoolRealArray( 1 ),

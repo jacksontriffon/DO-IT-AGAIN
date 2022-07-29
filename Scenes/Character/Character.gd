@@ -322,25 +322,28 @@ func _roll_the_dice():
 	yield(get_tree().create_timer(2), "timeout")
 	$AbilityContainer.visible = false
 
-func get_random_number()-> int:
-	var random_number = rand_range(0, 4.9) # Only first 5 abilities
+func get_random_number(max_number: float)-> int:
+	var random_generator = RandomNumberGenerator.new()
+	random_generator.randomize()
+	var random_number = random_generator.randf_range(0, max_number) # Only first 5 abilities
 	random_number = int(random_number)
 	
 	return random_number
 
-func _new_ability()->void:
-	print('--------------')
-	# Check this ability is new from last time
-	print('Previous ability: ',Player.previous_ability)
-	current_ability = Player.previous_ability
-	while  Player.previous_ability == current_ability:
-		var random_number = get_random_number()
-		if abilities[random_number] == Player.previous_ability:
-			print('we need to skip because we got  ', abilities[random_number])
-		else:
-			# Set new ability
-			current_ability = abilities[random_number]
-			print('new ability! ', current_ability)
+func _new_ability()->void: 
+	# Cycle through all the abilities every death 
+	# to prevent recurring abilities 
+	
+	# Refill abilities
+	if Player.abilities_to_choose_from.empty():
+		Player.abilities_to_choose_from = abilities
+	# Find new_ability
+	var abilities_left: int = Player.abilities_to_choose_from.size()
+	var random_number: int = get_random_number(abilities_left)
+	var new_ability: String = Player.abilities_to_choose_from.pop_at(random_number)
+	# Set new ability
+	current_ability = new_ability
+	
 	
 #	--------------------------
 #	# Remove

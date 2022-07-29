@@ -13,6 +13,7 @@ export var just_launched := false
 var won_this_run := false
 var music_playing := false
 var previous_ability: String
+var abilities_to_choose_from := []
 
 signal died
 signal respawn
